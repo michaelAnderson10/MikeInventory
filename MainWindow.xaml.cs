@@ -47,6 +47,11 @@ namespace MikeInventory
         {
             PersonData.RemovePerson();
         }
+
+        private void BtnSearch_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
  

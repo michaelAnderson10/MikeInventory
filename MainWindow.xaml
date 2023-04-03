@@ -32,7 +32,7 @@
         </StackPanel>
         <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
             <TextBox x:Name="TxtSearch" Height="25" Width="395" Margin="5"/>
-            <Button x:Name="BtnSearch" Height="25" Width="125" Margin="5" Content="SEARCH" FontSize="16" FontWeight="Bold"/>
+            <Button x:Name="BtnSearch" Height="25" Width="125" Margin="5" Content="SEARCH" FontSize="16" FontWeight="Bold" Click="BtnSearch_Click"/>
         </StackPanel>
     </Grid>
 </Window>

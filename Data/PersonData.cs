@@ -23,7 +23,7 @@ namespace MikeInventory.Data
 
             var db = new Person
             {
-                Name = "Nora",
+                Description = "Nora",
             };
             context.Persons.Add(db);
             context.SaveChanges();
@@ -45,7 +45,7 @@ namespace MikeInventory.Data
             Person varUpdate = new Person();
             using var db = new MikeInventoryContext();
             varUpdate = db.Persons.Where(x => x.Id == 3).First();
-            varUpdate.Name = "Michael";
+            varUpdate.Description = "Michael";
             db.SaveChanges();
         }
 

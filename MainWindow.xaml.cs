@@ -7,24 +7,23 @@ using System.Collections.ObjectModel;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System.Linq;
 using Microsoft.Identity.Client;
+using System.Windows.Controls;
 
 namespace MikeInventory
 {
     
     public partial class MainWindow : Window
     {
-        
+        public int? myVariable;
+
         public ObservableCollection<Person> persons;
         public MainWindow()
         {
             InitializeComponent();
 
+            persons = new ObservableCollection<Person>(PersonData.GetPerson());        
 
-            persons = new ObservableCollection<Person>(PersonData.GetPerson());
-            //persons = new ObservableCollection<Person>(PersonData.GetPerson());
-           
-
-            MyDataGrid.ItemsSource= persons;
+            DatagridMain.ItemsSource= persons;
 
         }
 
@@ -49,6 +48,17 @@ namespace MikeInventory
         }
 
         private void BtnSearch_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DatagridMain_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Person selectedPerson = (Person)DatagridMain.SelectedItem;
+            myVariable = selectedPerson.Id;
+        }
+
+        private void BtnClear_Click(object sender, RoutedEventArgs e)
         {
 
         }

@@ -5,34 +5,71 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MikeInventory"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="550" Width="940">
     <Grid>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="5*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
             <RowDefinition Height="5*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2.5*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="1" Grid.Column="0" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="1.2*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="1" Orientation="Horizontal">
+                    <ComboBox x:Name="CmbCategory" Height="20" Width="100" Margin="5 1 1 5" />
+                    <TextBox  x:Name="TxtId" Height="20" Width="100" Margin="5 1 1 5"/>
+                    <TextBox  x:Name="TxtDescription" Height="20" Width="100" Margin="5 1 1 5"/>
+                    <TextBox  x:Name="TxtQty" Height="20" Width="100" Margin="5 1 1 5"/>
+                    <TextBox x:Name="TxtSupplier" Height="20" Width="100" Margin="5 1 1 5" />
+                    <TextBox x:Name="TxtTag" Height="20" Width="100" Margin="5 1 1 5" />
+                </StackPanel>
+                <StackPanel Grid.Row="0" Orientation="Horizontal">
+                    <TextBlock Width="100" Height="20" Margin="5 1 1 5" Text="Category" TextAlignment="Center"/>
+                    <TextBlock Width="100" Height="20" Margin="5 1 1 5" Text="Part No" TextAlignment="Center"/>
+                    <TextBlock Width="100" Height="20" Margin="5 1 1 5" Text="Description" TextAlignment="Center"/>
+                    <TextBlock Width="100" Height="20" Margin="5 1 1 5" Text="Stock Quantity" TextAlignment="Center"/>
+                    <TextBlock Width="100" Height="20" Margin="5 1 1 5" Text="Supplier" TextAlignment="Center"/>
+                    <TextBlock Width="100" Height="20" Margin="5 1 1 5" Text="Tags" TextAlignment="Center"/>
+                </StackPanel>
+
+            </Grid>
+
+            <DataGrid Grid.Row="2" Grid.Column="0" x:Name="DatagridMain" SelectionChanged="DatagridMain_SelectionChanged"/>
+
+            <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
+                <Button x:Name="BtnCreate" Height="20" Width="100" Margin="5 1 1 5" BorderThickness="0" Content="Create" FontWeight="Bold" FontSize="12" Click="BtnCreate_Click" />
+                <Button x:Name="BtnRead" Height="20" Width="100" Margin="5 1 1 5" BorderThickness="0" Content="Read" FontWeight="Bold" FontSize="12" Click="BtnRead_Click" />
+                <Button x:Name="BtnUpdate" Height="20" Width="100" Margin="5 1 1 5" BorderThickness="0" Content="Update" FontWeight="Bold" FontSize="12" Click="BtnUpdate_Click" />
+                <Button x:Name="BtnDelete" Height="20" Width="100" Margin="5 1 1 5" BorderThickness="0" Content="Delete" FontWeight="Bold" FontSize="12" Click="BtnDelete_Click" />
+                <Button x:Name="BtnClear" Height="20" Width="100" Margin="5 1 1 5" BorderThickness="0" Content="Clear" FontWeight="Bold" FontSize="12" Click="BtnClear_Click" />
+            </StackPanel>
+            <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="BtnSearch" Height="20" Width="100" Margin="5" BorderThickness="0" Content="Search" FontSize="12" FontWeight="Bold" Click="BtnSearch_Click"/>
+                <TextBox x:Name="TxtSearch" Height="20" Width="150" Margin="5"/>
+            </StackPanel>
+
+        </Grid>
+
         <TextBlock Grid.Row="0" Grid.Column="1" Text="MIKE INVENTORY MANAGER" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-        <DataGrid Grid.Row="3" Grid.Column="1" x:Name="MyDataGrid"/>
-
-        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button x:Name="BtnCreate" Height="25" Width="125" Margin="5" Content="CREATE" FontWeight="Bold" FontSize="16" Click="BtnCreate_Click" />
-            <Button x:Name="BtnRead" Height="25" Width="125" Margin="5" Content="READ" FontWeight="Bold" FontSize="16" Click="BtnRead_Click" />
-            <Button x:Name="BtnUpdate" Height="25" Width="125" Margin="5" Content="UPDATE" FontWeight="Bold" FontSize="16" Click="BtnUpdate_Click" />
-            <Button x:Name="BtnDelete" Height="25" Width="125" Margin="5" Content="DELETE" FontWeight="Bold" FontSize="16" Click="BtnDelete_Click" />
-        </StackPanel>
-        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
-            <TextBox x:Name="TxtSearch" Height="25" Width="395" Margin="5"/>
-            <Button x:Name="BtnSearch" Height="25" Width="125" Margin="5" Content="SEARCH" FontSize="16" FontWeight="Bold" Click="BtnSearch_Click"/>
-        </StackPanel>
     </Grid>
+    
 </Window>

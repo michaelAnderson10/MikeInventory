@@ -44,8 +44,8 @@ namespace MikeInventory.Data
         {
             Person varUpdate = new Person();
             using var db = new MikeInventoryContext();
-            varUpdate = db.Persons.Where(x => x.Id == 4).First();
-            varUpdate.Name = "Frank";
+            varUpdate = db.Persons.Where(x => x.Id == 3).First();
+            varUpdate.Name = "Michael";
             db.SaveChanges();
         }
 
@@ -55,7 +55,7 @@ namespace MikeInventory.Data
         {
             Person varRemove = new Person();
             using var db = new MikeInventoryContext();
-            varRemove = db.Persons.Where(x => x.Id == 4).First();
+            varRemove = db.Persons.Where(x => x.Id == 3).First();
             db.Persons.Remove(varRemove);
             db.SaveChanges();
         }
@@ -63,7 +63,7 @@ namespace MikeInventory.Data
         public static List<Person> SearchPerson()
         {
             using var db = new MikeInventoryContext();
-            return db.Persons.Where(x => x.Id == 4).ToList();
+            return db.Persons.Where(x => x.Id == 3).ToList();
 
         }
 

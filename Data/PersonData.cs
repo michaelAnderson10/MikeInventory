@@ -12,7 +12,6 @@ using MikeInventory.Models;
 namespace MikeInventory.Data
 {
     
-
     public class PersonData
     {
 

@@ -12,6 +12,9 @@ namespace MikeInventory.Data;
 public class MikeInventoryContext : DbContext
 {
     public DbSet<Person> Persons { get; set; } = null!;
+    public DbSet<Tool> Tools { get; set; } = null!;
+    public DbSet<Part> Parts { get; set; } = null!;
+    public DbSet<Supplier> Suppliers { get; set; }=null!;
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

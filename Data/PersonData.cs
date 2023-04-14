@@ -26,7 +26,7 @@ namespace MikeInventory.Data
             };
             context.Persons.Add(db);
             context.SaveChanges();
-
+             
         }
 
         //Read all records in People table
@@ -45,11 +45,11 @@ namespace MikeInventory.Data
             using var db = new MikeInventoryContext();
             varUpdate = db.Persons.Where(x => x.Id == 3).First();
             varUpdate.Description = "Michael";
-            db.SaveChanges();
+            db.SaveChanges();  
         }
 
 
-        //Delete record from People table
+        //Delete record from People table  
         public static void RemovePerson()
         {
             Person varRemove = new Person();

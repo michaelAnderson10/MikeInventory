@@ -3,74 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:views="clr-namespace:MikeInventory.Views"
         xmlns:local="clr-namespace:MikeInventory"
         mc:Ignorable="d"
-        Title="MainWindow" Height="550" Width="940">
+        Title="MainWindow" Height="450" Width="800">
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="10"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="10"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="5*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
-        <Grid Grid.Row="1" Grid.Column="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2.5*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid Grid.Row="1" Grid.Column="0" >
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="1.2*"/>
-                </Grid.RowDefinitions>
-                <StackPanel Grid.Row="1" Orientation="Horizontal">
-                    <ComboBox x:Name="CmbCategory" Height="20" Width="100" Margin="5 1 1 5" />
-                    <TextBox  x:Name="TxtId" />
-                    <TextBox  x:Name="TxtDescription" />
-                    <TextBox  x:Name="TxtQty" />
-                    <TextBox x:Name="TxtSupplier"  />
-                    <TextBox x:Name="TxtTag" />
-                </StackPanel>
-                <StackPanel Grid.Row="0" Orientation="Horizontal">
-                    <TextBlock Text="Category" />
-                    <TextBlock Text="Part No" />
-                    <TextBlock Text="Description" />
-                    <TextBlock Text="Stock Quantity" />
-                    <TextBlock Text="Supplier" />
-                    <TextBlock Text="Tags" />
-                </StackPanel>
-
-            </Grid>
-
-            <DataGrid Grid.Row="2" Grid.Column="0" x:Name="DatagridMain" SelectionChanged="DatagridMain_SelectionChanged"/>
-
-            <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                <Button x:Name="BtnCreate"  Content="Create" Click="BtnCreate_Click" />
-                <Button x:Name="BtnRead" Content="Read"  Click="BtnRead_Click" />
-                <Button x:Name="BtnUpdate" Content="Update" Click="BtnUpdate_Click" />
-                <Button x:Name="BtnDelete" Content="Delete" Click="BtnDelete_Click" />
-                <Button x:Name="BtnClear" Content="Clear" Click="BtnClear_Click" />
-            </StackPanel>
-            <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button x:Name="BtnSearch" Content="Search" Click="BtnSearch_Click"/>
-                <TextBox x:Name="TxtSearch" Height="20" Width="150"/>
-            </StackPanel>
-
-        </Grid>
-
-        <TextBlock Grid.Column="1" Text="MIKE INVENTORY MANAGER" FontSize="25" HorizontalAlignment="Left" VerticalAlignment="Center" Height="35" Margin="254,0,0,0" Width="400"/>
-
+        <views:MyTextView/>
     </Grid>
-
 </Window>

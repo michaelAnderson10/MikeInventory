@@ -23,7 +23,7 @@ namespace MikeInventory
 
             persons = new ObservableCollection<Person>(PersonData.GetPerson());        
 
-            DatagridMain.ItemsSource= persons;
+            //DatagridMain.ItemsSource= persons;
 
         }
 
@@ -54,8 +54,8 @@ namespace MikeInventory
 
         private void DatagridMain_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Person selectedPerson = (Person)DatagridMain.SelectedItem;
-            myVariable = selectedPerson.Id;
+            //Person selectedPerson = (Person)DatagridMain.SelectedItem;
+            //myVariable = selectedPerson.Id;
         }
 
         private void BtnClear_Click(object sender, RoutedEventArgs e)

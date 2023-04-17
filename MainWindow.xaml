@@ -4,7 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:views="clr-namespace:MikeInventory.Views"
-        xmlns:Resources="clr-namespace:MikeInventory.Resources"
         xmlns:local="clr-namespace:MikeInventory"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
@@ -22,8 +21,6 @@
             <Button x:Name="BtnSupplier" Content="Supplier" Click="BtnSupplier_Click"/>
             <Button x:Name="BtnUser" Content="User" Click="BtnUser_Click"/>
         </StackPanel>
-
-        <!--<ContentControl Grid.Column="1" Style="{StaticResource StyleViews}"/>-->
 
         <ContentControl x:Name="CntHome" Grid.Column="1" Visibility="Visible">
             <views:HomeView Grid.Column="1"/>
@@ -46,6 +43,7 @@
         </ContentControl>
 
         <!--<views:MyTextView Grid.Column="1"/>-->
+        <!--<ContentControl Grid.Column="1" Style="{StaticResource StyleViews}"/>-->
 
     </Grid>
 

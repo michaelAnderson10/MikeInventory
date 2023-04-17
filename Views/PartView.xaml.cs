@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace MikeInventory.Views
 {
     /// <summary>
-    /// Interaction logic for Part.xaml
+    /// Interaction logic for PartView.xaml
     /// </summary>
-    public partial class Part : UserControl
+    public partial class PartView : UserControl
     {
-        public Part()
+        public PartView()
         {
             InitializeComponent();
         }

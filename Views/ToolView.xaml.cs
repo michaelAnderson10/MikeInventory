@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace MikeInventory.Views
 {
     /// <summary>
-    /// Interaction logic for Tool.xaml
+    /// Interaction logic for ToolView.xaml
     /// </summary>
-    public partial class Tool : UserControl
+    public partial class ToolView : UserControl
     {
-        public Tool()
+        public ToolView()
         {
             InitializeComponent();
         }

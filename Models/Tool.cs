@@ -16,8 +16,10 @@ namespace MikeInventory.Models
         public string ToolDescription { get; set; } = null!;
         public int? ToolQuantity { get; set; }     
         public string? ToolTag { get; set; }
-        public ICollection<Supplier>? Suppliers { get; set; }
-        public ICollection<User>? Users { get; set; }
+
+
+        //public ICollection<Supplier>? Suppliers { get; set; }
+        //public ICollection<User>? Users { get; set; }
 
     }
 }

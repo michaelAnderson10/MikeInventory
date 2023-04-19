@@ -20,8 +20,9 @@ namespace MikeInventory.Models
         public string? SupplierEmail { get;set; }
         public string? SupplierTag { get; set; }
 
-        public Part Part { get; set; } = null!;
-        public Tool Tool { get; set; } = null!;
+        public ICollection<Part>? Parts { get; set; }
+        public ICollection<Tool>? Tools { get; set; }
+
     }
 }
     

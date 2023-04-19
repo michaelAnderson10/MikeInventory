@@ -12,7 +12,7 @@ using MikeInventory.Data;
 namespace MikeInventory.Migrations
 {
     [DbContext(typeof(MikeInventoryContext))]
-    [Migration("20230419132309_InitialCreate")]
+    [Migration("20230419174044_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -40,7 +40,12 @@ namespace MikeInventory.Migrations
                     b.Property<int?>("PartTag")
                         .HasColumnType("int");
 
+                    b.Property<int?>("SupplierId")
+                        .HasColumnType("int");
+
                     b.HasKey("PartId");
+
+                    b.HasIndex("SupplierId");
 
                     b.ToTable("Parts");
                 });
@@ -48,9 +53,6 @@ namespace MikeInventory.Migrations
             modelBuilder.Entity("MikeInventory.Models.Supplier", b =>
                 {
                     b.Property<int>("SupplierId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PartId")
                         .HasColumnType("int");
 
                     b.Property<string>("SupplierAddress")
@@ -69,14 +71,7 @@ namespace MikeInventory.Migrations
                     b.Property<string>("SupplierTag")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ToolId")
-                        .HasColumnType("int");
-
                     b.HasKey("SupplierId");
-
-                    b.HasIndex("PartId");
-
-                    b.HasIndex("ToolId");
 
                     b.ToTable("Suppliers");
                 });
@@ -84,6 +79,9 @@ namespace MikeInventory.Migrations
             modelBuilder.Entity("MikeInventory.Models.Tool", b =>
                 {
                     b.Property<int>("ToolId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("SupplierId")
                         .HasColumnType("int");
 
                     b.Property<string>("ToolDescription")
@@ -97,6 +95,8 @@ namespace MikeInventory.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ToolId");
+
+                    b.HasIndex("SupplierId");
 
                     b.ToTable("Tools");
                 });
@@ -112,12 +112,6 @@ namespace MikeInventory.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PartId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ToolId")
-                        .HasColumnType("int");
-
                     b.Property<string>("UserEmail")
                         .HasColumnType("nvarchar(max)");
 
@@ -129,63 +123,28 @@ namespace MikeInventory.Migrations
 
                     b.HasKey("UserId");
 
-                    b.HasIndex("PartId");
-
-                    b.HasIndex("ToolId");
-
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("MikeInventory.Models.Supplier", b =>
-                {
-                    b.HasOne("MikeInventory.Models.Part", "Part")
-                        .WithMany("Suppliers")
-                        .HasForeignKey("PartId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MikeInventory.Models.Tool", "Tool")
-                        .WithMany("Suppliers")
-                        .HasForeignKey("ToolId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Part");
-
-                    b.Navigation("Tool");
-                });
-
-            modelBuilder.Entity("MikeInventory.Models.User", b =>
-                {
-                    b.HasOne("MikeInventory.Models.Part", "Part")
-                        .WithMany("Users")
-                        .HasForeignKey("PartId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MikeInventory.Models.Tool", "Tool")
-                        .WithMany("Users")
-                        .HasForeignKey("ToolId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Part");
-
-                    b.Navigation("Tool");
                 });
 
             modelBuilder.Entity("MikeInventory.Models.Part", b =>
                 {
-                    b.Navigation("Suppliers");
-
-                    b.Navigation("Users");
+                    b.HasOne("MikeInventory.Models.Supplier", null)
+                        .WithMany("Parts")
+                        .HasForeignKey("SupplierId");
                 });
 
             modelBuilder.Entity("MikeInventory.Models.Tool", b =>
                 {
-                    b.Navigation("Suppliers");
+                    b.HasOne("MikeInventory.Models.Supplier", null)
+                        .WithMany("Tools")
+                        .HasForeignKey("SupplierId");
+                });
 
-                    b.Navigation("Users");
+            modelBuilder.Entity("MikeInventory.Models.Supplier", b =>
+                {
+                    b.Navigation("Parts");
+
+                    b.Navigation("Tools");
                 });
 #pragma warning restore 612, 618
         }

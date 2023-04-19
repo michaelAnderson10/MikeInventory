@@ -19,8 +19,8 @@ namespace MikeInventory.Models
         public string? UserEmail { get; set;}
         public string? UserTag { get; set;}
 
-        //public ICollection<Part>? Parts { get; set; }
-        //public ICollection<Tool>? Tools { get; set; }
+        public ICollection<Part>? Parts { get; set; }
+        public ICollection<Tool>? Tools { get; set; }
 
     }
 }

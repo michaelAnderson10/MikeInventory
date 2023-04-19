@@ -38,9 +38,9 @@
                     <TextBox  x:Name="TxtIdPart" />
                     <TextBox  x:Name="TxtDescriptionPart" />
                     <TextBox  x:Name="TxtQtyPart" />
-                    <TextBox x:Name="TxtSupplierPart"  />
+                    <ComboBox x:Name="cmbSupplierPart"  />
                     <TextBox x:Name="TxtTagPart" />
-                    <TextBox x:Name="Txtuser" />
+                    <ComboBox x:Name="CmbUserPart" />
                 </StackPanel>
                 <StackPanel Grid.Row="2" Orientation="Horizontal">
                     <TextBlock Text="Part No" />
@@ -61,6 +61,5 @@
             </Grid>
 
         </Grid>
-
 
 </UserControl>

@@ -37,9 +37,9 @@
                 <TextBox  x:Name="TxtIdTool" />
                 <TextBox  x:Name="TxtDescriptionTool" />
                 <TextBox  x:Name="TxtQtyTool" />
-                <TextBox x:Name="TxtSupplierTool"  />
+                <ComboBox x:Name="CmbSupplierTool"  />
                 <TextBox x:Name="TxtTagTool" />
-                <TextBox x:Name="TxtUserTool"/>
+                <ComboBox x:Name="CmbUserTool"/>
             </StackPanel>
             <StackPanel Grid.Row="2" Orientation="Horizontal">
                 <TextBlock Text="Part No" />

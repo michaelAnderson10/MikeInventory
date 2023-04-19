@@ -8,20 +8,19 @@ using System.Threading.Tasks;
 
 namespace MikeInventory.Models
 {
-    public class Supplier
+    public class User
     {
-
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int SupplierId { get; set; }
-        public string SupplierName { get; set; } = null!;
-        public string? SupplierAddress { get; set; }
-        public string? SupplierPhone { get; set; }
-        public string? SupplierEmail { get;set; }
-        public string? SupplierTag { get; set; }
+        public int UserId { get; set; }
+        public string? FirstName { get; set; }
+        public string? LastName { get; set;}
+        public string? UserPhoneNo { get; set; }
+        public string? UserEmail { get; set;}
+        public string? UserTag { get; set;}
 
         public Part Part { get; set; } = null!;
         public Tool Tool { get; set; } = null!;
+      
     }
 }
-    

@@ -12,26 +12,23 @@ using MikeInventory.Data;
 namespace MikeInventory.Migrations
 {
     [DbContext(typeof(MikeInventoryContext))]
-    [Migration("20230405164747_ToolPartSupplierTableAdded")]
-    partial class ToolPartSupplierTableAdded
+    [Migration("20230419132309_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.4")
+                .HasAnnotation("ProductVersion", "7.0.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("MikeInventory.Models.Part", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<int>("PartId")
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("PartDescription")
                         .IsRequired()
@@ -40,37 +37,24 @@ namespace MikeInventory.Migrations
                     b.Property<int?>("PartQuantity")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.Property<int?>("PartTag")
+                        .HasColumnType("int");
+
+                    b.HasKey("PartId");
 
                     b.ToTable("Parts");
                 });
 
-            modelBuilder.Entity("MikeInventory.Models.Person", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Persons");
-                });
-
             modelBuilder.Entity("MikeInventory.Models.Supplier", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<int>("SupplierId")
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("PartId")
                         .HasColumnType("int");
+
+                    b.Property<string>("SupplierAddress")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SupplierEmail")
                         .HasColumnType("nvarchar(max)");
@@ -82,10 +66,13 @@ namespace MikeInventory.Migrations
                     b.Property<string>("SupplierPhone")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("SupplierTag")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("ToolId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("SupplierId");
 
                     b.HasIndex("PartId");
 
@@ -96,11 +83,8 @@ namespace MikeInventory.Migrations
 
             modelBuilder.Entity("MikeInventory.Models.Tool", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<int>("ToolId")
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("ToolDescription")
                         .IsRequired()
@@ -109,9 +93,47 @@ namespace MikeInventory.Migrations
                     b.Property<int?>("ToolQuantity")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.Property<string>("ToolTag")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ToolId");
 
                     b.ToTable("Tools");
+                });
+
+            modelBuilder.Entity("MikeInventory.Models.User", b =>
+                {
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PartId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ToolId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserEmail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserPhoneNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserTag")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId");
+
+                    b.HasIndex("PartId");
+
+                    b.HasIndex("ToolId");
+
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("MikeInventory.Models.Supplier", b =>
@@ -133,14 +155,37 @@ namespace MikeInventory.Migrations
                     b.Navigation("Tool");
                 });
 
+            modelBuilder.Entity("MikeInventory.Models.User", b =>
+                {
+                    b.HasOne("MikeInventory.Models.Part", "Part")
+                        .WithMany("Users")
+                        .HasForeignKey("PartId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MikeInventory.Models.Tool", "Tool")
+                        .WithMany("Users")
+                        .HasForeignKey("ToolId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Part");
+
+                    b.Navigation("Tool");
+                });
+
             modelBuilder.Entity("MikeInventory.Models.Part", b =>
                 {
                     b.Navigation("Suppliers");
+
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("MikeInventory.Models.Tool", b =>
                 {
                     b.Navigation("Suppliers");
+
+                    b.Navigation("Users");
                 });
 #pragma warning restore 612, 618
         }

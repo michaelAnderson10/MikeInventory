@@ -20,31 +20,31 @@ namespace MikeInventory.Data
         {
             var context = new MikeInventoryContext();
 
-            var db = new Person
+            var db = new User
             {
-                Description = "Nora",
+                FirstName = "Nora",
             };
-            context.Persons.Add(db);
+            context.Users.Add(db);
             context.SaveChanges();
              
         }
 
         //Read all records in People table
-        public static List<Person> GetPerson()
-        {
-            using (var db = new MikeInventoryContext())
-            {
-                return db.Persons.ToList();
-            }
-        }
+        //public static List<User> GetPerson()
+        //{
+        //    using (var db = new MikeInventoryContext())
+        //    {
+        //        return db.Persons.ToList();
+        //    }
+        //}
 
         //Update a record in People table
         public static void UpdatePerson()
         {
-            Person varUpdate = new Person();
+            User varUpdate = new User();
             using var db = new MikeInventoryContext();
-            varUpdate = db.Persons.Where(x => x.Id == 3).First();
-            varUpdate.Description = "Michael";
+            varUpdate = db.Users.Where(x => x.UserId == 3).First();
+            varUpdate.FirstName = "Michael";
             db.SaveChanges();  
         }
 
@@ -52,17 +52,17 @@ namespace MikeInventory.Data
         //Delete record from People table  
         public static void RemovePerson()
         {
-            Person varRemove = new Person();
+            User varRemove = new User();
             using var db = new MikeInventoryContext();
-            varRemove = db.Persons.Where(x => x.Id == 3).First();
-            db.Persons.Remove(varRemove);
+            varRemove = db.Users.Where(x => x.UserId == 3).First();
+            db.Users.Remove(varRemove);
             db.SaveChanges();
         }
 
-        public static List<Person> SearchPerson()
+        public static List<User> SearchPerson()
         {
             using var db = new MikeInventoryContext();
-            return db.Persons.Where(x => x.Id == 3).ToList();
+            return db.Users.Where(x => x.UserId == 3).ToList();
 
         }
 

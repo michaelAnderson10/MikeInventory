@@ -8,7 +8,7 @@ using MikeInventory.Models;
 
 namespace MikeInventory.Data
 {
-    public class PersonReadData: ObservableCollection<Person>
+    public class PersonReadData: ObservableCollection<User>
     {
         public PersonReadData() : base()
         {

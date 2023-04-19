@@ -16,12 +16,12 @@ namespace MikeInventory
     {
         public int? myVariable;
 
-        public ObservableCollection<Person> persons;
+        public ObservableCollection<User> persons;
         public MainWindow()
         {
             InitializeComponent();
 
-            persons = new ObservableCollection<Person>(PersonData.GetPerson());        
+            //persons = new ObservableCollection<User>(PersonData.GetPerson());        
 
             //DatagridMain.ItemsSource= persons;
 

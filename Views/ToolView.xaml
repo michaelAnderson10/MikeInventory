@@ -39,6 +39,7 @@
                 <TextBox  x:Name="TxtQtyTool" />
                 <TextBox x:Name="TxtSupplierTool"  />
                 <TextBox x:Name="TxtTagTool" />
+                <TextBox x:Name="TxtUserTool"/>
             </StackPanel>
             <StackPanel Grid.Row="2" Orientation="Horizontal">
                 <TextBlock Text="Part No" />
@@ -46,6 +47,7 @@
                 <TextBlock Text="Stock Quantity" />
                 <TextBlock Text="Supplier" />
                 <TextBlock Text="Tags" />
+                <TextBlock Text="Added by"/>
             </StackPanel>
 
             <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">

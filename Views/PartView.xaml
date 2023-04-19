@@ -40,13 +40,15 @@
                     <TextBox  x:Name="TxtQtyPart" />
                     <TextBox x:Name="TxtSupplierPart"  />
                     <TextBox x:Name="TxtTagPart" />
+                    <TextBox x:Name="Txtuser" />
                 </StackPanel>
                 <StackPanel Grid.Row="2" Orientation="Horizontal">
-                <TextBlock Text="Part No" />
+                    <TextBlock Text="Part No" />
                     <TextBlock Text="Description" />
                     <TextBlock Text="Stock Quantity" />
                     <TextBlock Text="Supplier" />
                     <TextBlock Text="Tags" />
+                    <TextBlock Text="Added by" />
                 </StackPanel>
 
                 <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">

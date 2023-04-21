@@ -12,11 +12,11 @@ using MikeInventory.Models;
 namespace MikeInventory.Data
 {
     
-    public class PersonData
+    public class UserDataAccess
     {
 
         //Create new record in People table
-        public static void AddPerson()
+        public static void AddUser()
         {
             var context = new MikeInventoryContext();
 
@@ -30,16 +30,16 @@ namespace MikeInventory.Data
         }
 
         //Read all records in People table
-        //public static List<User> GetPerson()
-        //{
-        //    using (var db = new MikeInventoryContext())
-        //    {
-        //        return db.Persons.ToList();
-        //    }
-        //}
+        public static List<User> GetPerson()
+        {
+            using (var db = new MikeInventoryContext())
+            {
+                return db.Users.ToList();
+            }
+        }
 
         //Update a record in People table
-        public static void UpdatePerson()
+        public static void UpdateUser()
         {
             User varUpdate = new User();
             using var db = new MikeInventoryContext();
@@ -50,7 +50,7 @@ namespace MikeInventory.Data
 
 
         //Delete record from People table  
-        public static void RemovePerson()
+        public static void RemoveUser()
         {
             User varRemove = new User();
             using var db = new MikeInventoryContext();
@@ -59,7 +59,7 @@ namespace MikeInventory.Data
             db.SaveChanges();
         }
 
-        public static List<User> SearchPerson()
+        public static List<User> SearchUser()
         {
             using var db = new MikeInventoryContext();
             return db.Users.Where(x => x.UserId == 3).ToList();

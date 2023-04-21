@@ -42,6 +42,8 @@
             <views:UserView Grid.Column="1"/>
         </ContentControl>
 
+       
+
         <!--<views:MyTextView Grid.Column="1"/>-->
         <!--<ContentControl Grid.Column="1" Style="{StaticResource StyleViews}"/>-->
 

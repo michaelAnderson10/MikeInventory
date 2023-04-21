@@ -1,5 +1,8 @@
-﻿using System;
+﻿using MikeInventory.Data;
+using MikeInventory.Models;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +23,15 @@ namespace MikeInventory.Views
     /// </summary>
     public partial class UserView : UserControl
     {
+        public ObservableCollection<User> users;
         public UserView()
         {
             InitializeComponent();
+                      
+            users = new ObservableCollection<User>(UserDataAccess.GetPerson());
+
+            DatagridUser.ItemsSource = users;
+           
         }
     }
 }

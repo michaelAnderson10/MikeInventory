@@ -27,7 +27,7 @@
         </ContentControl>
 
         <ContentControl x:Name="CntPart" Grid.Column="1" Visibility="Hidden">
-            <views:PartView Grid.Column="1"/>
+            <views:PartView Grid.Column="1" DataContext="{Binding CurrentViewModel}" />
         </ContentControl>
 
         <ContentControl x:Name="CntTool" Grid.Column="1" Visibility="Hidden">
@@ -41,9 +41,7 @@
         <ContentControl x:Name="CntUser" Grid.Column="1" Visibility="Hidden">
             <views:UserView Grid.Column="1"/>
         </ContentControl>
-
-       
-
+      
         <!--<views:MyTextView Grid.Column="1"/>-->
         <!--<ContentControl Grid.Column="1" Style="{StaticResource StyleViews}"/>-->
 

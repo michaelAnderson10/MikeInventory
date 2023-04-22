@@ -30,7 +30,7 @@ namespace MikeInventory.Data
         }
 
         //Read all records in People table
-        public static List<User> GetPerson()
+        public static List<User> GetUser()
         {
             using (var db = new MikeInventoryContext())
             {

@@ -28,7 +28,7 @@ namespace MikeInventory.Views
         {
             InitializeComponent();
                       
-            users = new ObservableCollection<User>(UserDataAccess.GetPerson());
+            users = new ObservableCollection<User>(UserDataAccess.GetUser());
 
             DatagridUser.ItemsSource = users;
            

@@ -8,10 +8,25 @@
              d:DesignHeight="450" d:DesignWidth="800">
 
     
-    <ContentControl Style="{StaticResource StyleViews}">
+    <ContentControl>
 
         <Grid>
-        
+            <Grid.RowDefinitions>
+                <RowDefinition Height="77*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="10*"/>
+                </Grid.RowDefinitions>
+
                 <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left">
                     <Button x:Name="BtnTXXXXX" Content="Mike"/>
                     <Button x:Name="BtnRead" Content="Unallocated"/>
@@ -39,10 +54,13 @@
                     <Button x:Name="BtnSearch" Content="Search"/>
                     <TextBox x:Name="TxtSearch" Height="20" Width="150"/>
                 </StackPanel>
+                
 
-                <DataGrid Grid.Row="4" Grid.Column="1" x:Name="DatagridMain" Margin="5"/>
+                <!--<DataGrid Grid.Row="4" Grid.Column="1" x:Name="DatagridMain" Margin="5"/>-->
+                
 
             </Grid>
+        </Grid>
 
     </ContentControl>
 

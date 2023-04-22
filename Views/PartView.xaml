@@ -3,13 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:MikeInventory.Views"
+             xmlns:local="clr-namespace:MikeInventory.Views" 
+             xmlns:viewmodels="clr-namespace:MikeInventory.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
 
 
-        <Grid>
+    <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="77*"/>
             </Grid.RowDefinitions>
@@ -33,13 +34,14 @@
                     <Button x:Name="BtnUpdatePart" Content="Update"/>
                     <Button x:Name="BtnDeletePart" Content="Delete"/>
                     <Button x:Name="BtnClearPart"  Content="Clear"/>
-                </StackPanel>
+                    <Button x:Name="TestRunPart"  Content="Test run" Click="TestRunPart_Click" />
+            </StackPanel>
                 <StackPanel Grid.Row="3" Orientation="Horizontal">
-                    <TextBox  x:Name="TxtIdPart" />
-                    <TextBox  x:Name="TxtDescriptionPart" />
-                    <TextBox  x:Name="TxtQtyPart" />
+                    <TextBox  x:Name="TxtIdPart" Text="{Binding PartId, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBox  x:Name="TxtDescriptionPart" Text="{Binding PartDescription, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBox  x:Name="TxtQtyPart" Text="{Binding PartQuantity, UpdateSourceTrigger=PropertyChanged}" />
                     <ComboBox x:Name="cmbSupplierPart"  />
-                    <TextBox x:Name="TxtTagPart" />
+                    <TextBox x:Name="TxtTagPart" Text="{Binding PartTag, UpdateSourceTrigger=PropertyChanged}" />
                     <ComboBox x:Name="CmbUserPart" />
                 </StackPanel>
                 <StackPanel Grid.Row="2" Orientation="Horizontal">
@@ -51,14 +53,15 @@
                     <TextBlock Text="Added by" />
                 </StackPanel>
 
-                <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button x:Name="BtnSearchPart" Content="Search"/>
-                    <TextBox x:Name="TxtSearchPart" Height="20" Width="150"/>
-                </StackPanel>
+            <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="BtnSearchPart" Content="Search"/>
+                <TextBox x:Name="TxtSearchPart" Height="20" Width="150"/>
+            </StackPanel>
 
-                <DataGrid Grid.Row="4" Grid.Column="1" x:Name="DatagridPart" Margin="5"/>
+            <DataGrid Grid.Row="4" Grid.Column="1" x:Name="DatagridPart" Margin="5" />
 
-            </Grid>
+
+        </Grid>
 
         </Grid>
 

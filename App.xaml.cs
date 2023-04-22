@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore.Query.Internal;
+using MikeInventory.Views;
 using System.Windows;
 
 namespace MikeInventory
@@ -13,6 +9,17 @@ namespace MikeInventory
     /// </summary>
     public partial class App : Application
     {
+       
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            MainWindow = new MainWindow()
+            {
+                DataContext = new MainViewModel()
+            };
+            MainWindow.Show();
+
+            base.OnStartup(e);
+        }
 
 
     }

@@ -9,11 +9,11 @@ namespace MikeInventory.Views
 {
     public class MainViewModel : BaseViewModel
     {
-        public BaseViewModel CurrentViewModel { get; set; }
+        //public BaseViewModel CurrentViewModel { get; set; }
 
-        public MainViewModel()
-        {
-            CurrentViewModel = new PartViewModel();
-        }
+        //public MainViewModel()
+        //{
+        //    CurrentViewModel = new PartViewModel();
+        //}
     }
 }

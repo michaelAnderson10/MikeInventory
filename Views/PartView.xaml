@@ -67,14 +67,15 @@
                 </Grid.DataContext>
                 <DataGrid Grid.Row="4" x:Name="DatagridPart" ItemsSource="{Binding parts}" AutoGenerateColumns="False">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="PartId" Binding="{Binding PartId}" />
-                        <DataGridTextColumn Header="PartDescription" Binding="{Binding PartDescription}" />
-                        <DataGridTextColumn Header="PartQuantity" Binding="{Binding PartQuantity}" />
-                        <DataGridTextColumn Header="PartTag" Binding="{Binding PartTag}" />
+                        <DataGridTextColumn Header="Part No" Binding="{Binding PartId}" />
+                        <DataGridTextColumn Header="Description" Binding="{Binding PartDescription}" />
+                        <DataGridTextColumn Header="Quantity" Binding="{Binding PartQuantity}" />
+                        <DataGridTextColumn Header="Tags" Binding="{Binding PartTag}" />
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>
 
+                
         </Grid>
 
         </Grid>

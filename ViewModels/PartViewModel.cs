@@ -74,32 +74,33 @@ namespace MikeInventory.ViewModels
             }
         }
 
-        public ObservableCollection<Part> parts { get; set; }
-        public PartViewModel()
-        {
-            parts = new ObservableCollection<Part>(PartDataAccess.GetPart());
-            OnPropertyChanged(nameof(Part));
-        }
-
-        //private ObservableCollection<Part> _parts { get; set; }
-        //public ObservableCollection<Part> parts
+        //public ObservableCollection<Part> parts { get; set; }
+        //public PartViewModel()
         //{
-        //    get
-        //    {
-        //        return _parts;
-        //    }
-        //    set
-        //    {         
-        //        _parts = new ObservableCollection<Part>(PartDataAccess.GetPart());
-        //        parts = _parts;
-        //        OnPropertyChanged(nameof(parts));
-        //    }
-
+        //    parts = new ObservableCollection<Part>(PartDataAccess.GetPart());
+        //    OnPropertyChanged(nameof(Part));
         //}
 
-
-
-
+        private ObservableCollection<Part> _parts;
+        public ObservableCollection<Part> parts
+        {
+            get
+            {
+                return _parts;
+            }
+            set
+            {
+                if (_parts != value)
+                {
+                    _parts = value;
+                    OnPropertyChanged(nameof(parts));
+                }
+            }
+        }
+        public PartViewModel()
+        {
+            _parts = new ObservableCollection<Part>(PartDataAccess.GetPart());
+        }
 
 
     }

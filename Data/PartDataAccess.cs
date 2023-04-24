@@ -16,10 +16,10 @@ namespace MikeInventory.Data
 
             var db = new Part
             {
-                PartId = 104,
-                PartDescription = "Filter",
-                PartQuantity = 1,
-                PartTag = "Filter tag",
+                PartId = 107,
+                PartDescription = "Masking Tape",
+                PartQuantity = 5,
+                PartTag = "Masking tape",
             };
             context.Parts.Add(db);
             context.SaveChanges();

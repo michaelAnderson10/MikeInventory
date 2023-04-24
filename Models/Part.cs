@@ -15,7 +15,7 @@ namespace MikeInventory.Models
         public int PartId { get; set; }
         public string PartDescription { get; set; } = null!;
         public int? PartQuantity { get; set; }
-        public int? PartTag { get; set; }    
+        public string? PartTag { get; set; }    
 
     }
 }

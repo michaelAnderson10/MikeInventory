@@ -13,19 +13,18 @@ namespace MikeInventory.Views
     /// </summary>
     public partial class PartView : UserControl
     {
-        public ObservableCollection<Part>? parts;
+        //public ObservableCollection<Part>? parts;
         public PartView()
         {
-
             InitializeComponent();
-
-        }
-
-        private void TestRunPart_Click(object sender, RoutedEventArgs e)
-        {
             //parts = new ObservableCollection<Part>(PartDataAccess.GetPart());
             //DatagridPart.ItemsSource = parts;
 
+        }
+
+        private void BtnCreatePart_Click(object sender, RoutedEventArgs e)
+        {
+            PartDataAccess.AddPart();
         }
     }
 }

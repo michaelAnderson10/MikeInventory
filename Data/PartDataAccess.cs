@@ -1,6 +1,7 @@
 ﻿using MikeInventory.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,17 +10,20 @@ namespace MikeInventory.Data
 {
     public class PartDataAccess
     {
-        //public static void AddUser()
-        //{
-        //    var context = new MikeInventoryContext();
+        public static void AddPart()
+        {
+            var context = new MikeInventoryContext();
 
-        //    var db = new User
-        //    {
-        //        FirstName = "Nora",
-        //    };
-        //    context.Users.Add(db);
-        //    context.SaveChanges();
-        //}
+            var db = new Part
+            {
+                PartId = 104,
+                PartDescription = "Filter",
+                PartQuantity = 1,
+                PartTag = "Filter tag",
+            };
+            context.Parts.Add(db);
+            context.SaveChanges();
+        }
 
         ////Read all records in People table
         public static List<Part> GetPart()
@@ -29,6 +33,12 @@ namespace MikeInventory.Data
                 return db.Parts.ToList();
             }
         }
+        //public ObservableCollection<Part>? parts;
+        //public PartDataAccess()
+        //{
+        //    parts = new ObservableCollection<Part>(PartDataAccess.GetPart());
+        //}
+
 
         ////Update a record in People table
         //public static void UpdateUser()

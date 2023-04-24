@@ -6,9 +6,11 @@
              xmlns:local="clr-namespace:MikeInventory.Views" 
              xmlns:viewmodels="clr-namespace:MikeInventory.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"> 
 
-
+    <!--<UserControl.DataContext>
+        <viewmodels:PartViewModel/>
+    </UserControl.DataContext>-->
 
     <Grid>
             <Grid.RowDefinitions>
@@ -30,12 +32,11 @@
                 <TextBlock Text="Parts" FontSize="20" FontWeight="Bold" Width="100" Height="30"/>
 
                 <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left">
-                    <Button x:Name="BtnCreatePart" Content="Create"/>
+                    <Button x:Name="BtnCreatePart" Content="Create" Click="BtnCreatePart_Click"/>
                     <Button x:Name="BtnUpdatePart" Content="Update"/>
                     <Button x:Name="BtnDeletePart" Content="Delete"/>
-                    <Button x:Name="BtnClearPart"  Content="Clear"/>
-                    <Button x:Name="TestRunPart"  Content="Test run" Click="TestRunPart_Click" />
-            </StackPanel>
+                    <Button x:Name="BtnClearPart"  Content="Clear"/> 
+                </StackPanel>
                 <StackPanel Grid.Row="3" Orientation="Horizontal">
                     <TextBox  x:Name="TxtIdPart" Text="{Binding PartId, UpdateSourceTrigger=PropertyChanged}" />
                     <TextBox  x:Name="TxtDescriptionPart" Text="{Binding PartDescription, UpdateSourceTrigger=PropertyChanged}" />
@@ -43,7 +44,7 @@
                     <ComboBox x:Name="cmbSupplierPart"  />
                     <TextBox x:Name="TxtTagPart" Text="{Binding PartTag, UpdateSourceTrigger=PropertyChanged}" />
                     <ComboBox x:Name="CmbUserPart" />
-                </StackPanel>
+                </StackPanel> 
                 <StackPanel Grid.Row="2" Orientation="Horizontal">
                     <TextBlock Text="Part No" />
                     <TextBlock Text="Description" />
@@ -58,8 +59,21 @@
                 <TextBox x:Name="TxtSearchPart" Height="20" Width="150"/>
             </StackPanel>
 
-            <DataGrid Grid.Row="4" Grid.Column="1" x:Name="DatagridPart" Margin="5" />
+            <!--<DataGrid Grid.Row="4" Grid.Column="1" x:Name="DatagridPart" ItemsSource="{Binding parts}" AutoGenerateColumns="True"/>-->
 
+            <Grid Grid.Row="4">
+                <Grid.DataContext>
+                    <viewmodels:PartViewModel/>
+                </Grid.DataContext>
+                <DataGrid Grid.Row="4" x:Name="DatagridPart" ItemsSource="{Binding parts}" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="PartId" Binding="{Binding PartId}" />
+                        <DataGridTextColumn Header="PartDescription" Binding="{Binding PartDescription}" />
+                        <DataGridTextColumn Header="PartQuantity" Binding="{Binding PartQuantity}" />
+                        <DataGridTextColumn Header="PartTag" Binding="{Binding PartTag}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
 
         </Grid>
 

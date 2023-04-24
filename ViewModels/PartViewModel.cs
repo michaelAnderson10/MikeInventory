@@ -9,12 +9,15 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using MikeInventory.Views;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Runtime.InteropServices;
 
 namespace MikeInventory.ViewModels
 {
     public class PartViewModel : BaseViewModel
     {
-        
+
         private int _partId;
         public int PartId
         {
@@ -71,20 +74,33 @@ namespace MikeInventory.ViewModels
             }
         }
 
-        //public ObservableCollection<Part>? parts;
-        //public void MyMethod()
-        //{
-        //    parts = new ObservableCollection<Part>(PartDataAccess.GetPart());
+        public ObservableCollection<Part> parts { get; set; }
+        public PartViewModel()
+        {
+            parts = new ObservableCollection<Part>(PartDataAccess.GetPart());
+            OnPropertyChanged(nameof(Part));
+        }
 
-        //    //parts = new ObservableCollection<Part>();
-        //    //Views.PartView.DatagridPart.ItemsSource = parts;
+        //private ObservableCollection<Part> _parts { get; set; }
+        //public ObservableCollection<Part> parts
+        //{
+        //    get
+        //    {
+        //        return _parts;
+        //    }
+        //    set
+        //    {         
+        //        _parts = new ObservableCollection<Part>(PartDataAccess.GetPart());
+        //        parts = _parts;
+        //        OnPropertyChanged(nameof(parts));
+        //    }
 
         //}
 
-        //public ObservableCollection<Part>? parts { get; set; }
-        //parts = new ObservableCollection<Part>(PartDataAccess.GetPart());
-        
-        
+
+
+
+
 
     }
 }

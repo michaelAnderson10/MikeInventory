@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MikeInventory.Views
 {
-    public class MainViewModel:BaseViewModel
+    public class MainViewModel : BaseViewModel
     {
         public BaseViewModel CurrentViewModel { get; set; }
 

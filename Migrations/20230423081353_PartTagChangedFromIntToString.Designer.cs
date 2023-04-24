@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MikeInventory.Data;
 
@@ -11,9 +12,11 @@ using MikeInventory.Data;
 namespace MikeInventory.Migrations
 {
     [DbContext(typeof(MikeInventoryContext))]
-    partial class MikeInventoryContextModelSnapshot : ModelSnapshot
+    [Migration("20230423081353_PartTagChangedFromIntToString")]
+    partial class PartTagChangedFromIntToString
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,7 +52,7 @@ namespace MikeInventory.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Parts", (string)null);
+                    b.ToTable("Parts");
                 });
 
             modelBuilder.Entity("MikeInventory.Models.Supplier", b =>
@@ -75,7 +78,7 @@ namespace MikeInventory.Migrations
 
                     b.HasKey("SupplierId");
 
-                    b.ToTable("Suppliers", (string)null);
+                    b.ToTable("Suppliers");
                 });
 
             modelBuilder.Entity("MikeInventory.Models.Tool", b =>
@@ -105,7 +108,7 @@ namespace MikeInventory.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Tools", (string)null);
+                    b.ToTable("Tools");
                 });
 
             modelBuilder.Entity("MikeInventory.Models.User", b =>
@@ -130,7 +133,7 @@ namespace MikeInventory.Migrations
 
                     b.HasKey("UserId");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("MikeInventory.Models.Part", b =>

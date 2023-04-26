@@ -12,8 +12,8 @@ using MikeInventory.Data;
 namespace MikeInventory.Migrations
 {
     [DbContext(typeof(MikeInventoryContext))]
-    [Migration("20230423081353_PartTagChangedFromIntToString")]
-    partial class PartTagChangedFromIntToString
+    [Migration("20230426101558_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -40,17 +40,17 @@ namespace MikeInventory.Migrations
                     b.Property<string>("PartTag")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("SupplierId")
+                    b.Property<int?>("SupplierID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UserId")
+                    b.Property<int?>("UserID")
                         .HasColumnType("int");
 
                     b.HasKey("PartId");
 
-                    b.HasIndex("SupplierId");
+                    b.HasIndex("SupplierID");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserID");
 
                     b.ToTable("Parts");
                 });
@@ -86,7 +86,7 @@ namespace MikeInventory.Migrations
                     b.Property<int>("ToolId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("SupplierId")
+                    b.Property<int?>("SupplierID")
                         .HasColumnType("int");
 
                     b.Property<string>("ToolDescription")
@@ -99,14 +99,14 @@ namespace MikeInventory.Migrations
                     b.Property<string>("ToolTag")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("UserId")
+                    b.Property<int?>("UserID")
                         .HasColumnType("int");
 
                     b.HasKey("ToolId");
 
-                    b.HasIndex("SupplierId");
+                    b.HasIndex("SupplierID");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserID");
 
                     b.ToTable("Tools");
                 });
@@ -138,24 +138,32 @@ namespace MikeInventory.Migrations
 
             modelBuilder.Entity("MikeInventory.Models.Part", b =>
                 {
-                    b.HasOne("MikeInventory.Models.Supplier", null)
+                    b.HasOne("MikeInventory.Models.Supplier", "Supplier")
                         .WithMany("Parts")
-                        .HasForeignKey("SupplierId");
+                        .HasForeignKey("SupplierID");
 
-                    b.HasOne("MikeInventory.Models.User", null)
+                    b.HasOne("MikeInventory.Models.User", "User")
                         .WithMany("Parts")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserID");
+
+                    b.Navigation("Supplier");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("MikeInventory.Models.Tool", b =>
                 {
-                    b.HasOne("MikeInventory.Models.Supplier", null)
+                    b.HasOne("MikeInventory.Models.Supplier", "Supplier")
                         .WithMany("Tools")
-                        .HasForeignKey("SupplierId");
+                        .HasForeignKey("SupplierID");
 
-                    b.HasOne("MikeInventory.Models.User", null)
+                    b.HasOne("MikeInventory.Models.User", "User")
                         .WithMany("Tools")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserID");
+
+                    b.Navigation("Supplier");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("MikeInventory.Models.Supplier", b =>

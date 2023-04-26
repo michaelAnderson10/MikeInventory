@@ -21,7 +21,10 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="1">
-                <Grid.RowDefinitions>
+                <Grid.DataContext>
+                    <viewmodels:PartViewModel/>
+                </Grid.DataContext>
+            <Grid.RowDefinitions>
                     <RowDefinition Height="2*"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
@@ -37,14 +40,18 @@
                     <Button x:Name="BtnDeletePart" Content="Delete"/>
                     <Button x:Name="BtnClearPart"  Content="Clear"/> 
                 </StackPanel>
-                <StackPanel Grid.Row="3" Orientation="Horizontal">
+                <StackPanel Grid.Row="3" Orientation="Horizontal">               
                     <TextBox  x:Name="TxtIdPart" Text="{Binding PartId, UpdateSourceTrigger=PropertyChanged}" />
                     <TextBox  x:Name="TxtDescriptionPart" Text="{Binding PartDescription, UpdateSourceTrigger=PropertyChanged}" />
                     <TextBox  x:Name="TxtQtyPart" Text="{Binding PartQuantity, UpdateSourceTrigger=PropertyChanged}" />
                     <ComboBox x:Name="cmbSupplierPart"  />
                     <TextBox x:Name="TxtTagPart" Text="{Binding PartTag, UpdateSourceTrigger=PropertyChanged}" />
-                    <ComboBox x:Name="CmbUserPart" />
-                </StackPanel> 
+                    <ComboBox x:Name="CmbUserPart" ItemsSource="{Binding Users}" DisplayMemberPath="UserId" >
+                    <ComboBox.DataContext>
+                        <viewmodels:UserViewModel/>
+                    </ComboBox.DataContext>
+                </ComboBox>
+            </StackPanel> 
                 <StackPanel Grid.Row="2" Orientation="Horizontal">
                     <TextBlock Text="Part No" />
                     <TextBlock Text="Description" />
@@ -59,18 +66,14 @@
                 <TextBox x:Name="TxtSearchPart" Height="20" Width="150"/>
             </StackPanel>
 
-            <!--<DataGrid Grid.Row="4" Grid.Column="1" x:Name="DatagridPart" ItemsSource="{Binding parts}" AutoGenerateColumns="True"/>-->
-
             <Grid Grid.Row="4">
-                <Grid.DataContext>
-                    <viewmodels:PartViewModel/>
-                </Grid.DataContext>
-                <DataGrid Grid.Row="4" x:Name="DatagridPart" ItemsSource="{Binding parts}" AutoGenerateColumns="False">
+                <DataGrid Grid.Row="4" x:Name="DatagridPart" ItemsSource="{Binding Parts}" AutoGenerateColumns="False">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Part No" Binding="{Binding PartId}" />
                         <DataGridTextColumn Header="Description" Binding="{Binding PartDescription}" />
                         <DataGridTextColumn Header="Quantity" Binding="{Binding PartQuantity}" />
                         <DataGridTextColumn Header="Tags" Binding="{Binding PartTag}" />
+                        <DataGridTextColumn Header="Added by" Binding="{Binding UserID}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>

@@ -49,17 +49,23 @@ namespace MikeInventory.Migrations
                     PartId = table.Column<int>(type: "int", nullable: false),
                     PartDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PartQuantity = table.Column<int>(type: "int", nullable: true),
-                    PartTag = table.Column<int>(type: "int", nullable: true),
-                    SupplierId = table.Column<int>(type: "int", nullable: true)
+                    PartTag = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SupplierID = table.Column<int>(type: "int", nullable: true),
+                    UserID = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Parts", x => x.PartId);
                     table.ForeignKey(
-                        name: "FK_Parts_Suppliers_SupplierId",
-                        column: x => x.SupplierId,
+                        name: "FK_Parts_Suppliers_SupplierID",
+                        column: x => x.SupplierID,
                         principalTable: "Suppliers",
                         principalColumn: "SupplierId");
+                    table.ForeignKey(
+                        name: "FK_Parts_Users_UserID",
+                        column: x => x.UserID,
+                        principalTable: "Users",
+                        principalColumn: "UserId");
                 });
 
             migrationBuilder.CreateTable(
@@ -70,27 +76,43 @@ namespace MikeInventory.Migrations
                     ToolDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ToolQuantity = table.Column<int>(type: "int", nullable: true),
                     ToolTag = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SupplierId = table.Column<int>(type: "int", nullable: true)
+                    SupplierID = table.Column<int>(type: "int", nullable: true),
+                    UserID = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Tools", x => x.ToolId);
                     table.ForeignKey(
-                        name: "FK_Tools_Suppliers_SupplierId",
-                        column: x => x.SupplierId,
+                        name: "FK_Tools_Suppliers_SupplierID",
+                        column: x => x.SupplierID,
                         principalTable: "Suppliers",
                         principalColumn: "SupplierId");
+                    table.ForeignKey(
+                        name: "FK_Tools_Users_UserID",
+                        column: x => x.UserID,
+                        principalTable: "Users",
+                        principalColumn: "UserId");
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Parts_SupplierId",
+                name: "IX_Parts_SupplierID",
                 table: "Parts",
-                column: "SupplierId");
+                column: "SupplierID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Tools_SupplierId",
+                name: "IX_Parts_UserID",
+                table: "Parts",
+                column: "UserID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Tools_SupplierID",
                 table: "Tools",
-                column: "SupplierId");
+                column: "SupplierID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Tools_UserID",
+                table: "Tools",
+                column: "UserID");
         }
 
         /// <inheritdoc />
@@ -103,10 +125,10 @@ namespace MikeInventory.Migrations
                 name: "Tools");
 
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "Suppliers");
 
             migrationBuilder.DropTable(
-                name: "Suppliers");
+                name: "Users");
         }
     }
 }

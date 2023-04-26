@@ -1,17 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore.SqlServer.Query.Internal;
-using MikeInventory.Data;
+﻿using MikeInventory.Data;
 using MikeInventory.Models;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using MikeInventory.Views;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System.Runtime.InteropServices;
 
 namespace MikeInventory.ViewModels
 {
@@ -74,33 +63,33 @@ namespace MikeInventory.ViewModels
             }
         }
 
-        //public ObservableCollection<Part> parts { get; set; }
-        //public PartViewModel()
-        //{
-        //    parts = new ObservableCollection<Part>(PartDataAccess.GetPart());
-        //    OnPropertyChanged(nameof(Part));
-        //}
-
-        private ObservableCollection<Part> _parts;
-        public ObservableCollection<Part> parts
-        {
-            get
-            {
-                return _parts;
-            }
-            set
-            {
-                if (_parts != value)
-                {
-                    _parts = value;
-                    OnPropertyChanged(nameof(parts));
-                }
-            }
-        }
+        public ObservableCollection<Part> Parts { get; set; }
         public PartViewModel()
         {
-            _parts = new ObservableCollection<Part>(PartDataAccess.GetPart());
+            Parts = new ObservableCollection<Part>(PartDataAccess.GetPart());
+            OnPropertyChanged(nameof(Part));
         }
+
+        //private ObservableCollection<Part> _parts;
+        //public ObservableCollection<Part> Parts
+        //{
+        //    get
+        //    {
+        //        return _parts;
+        //    }
+        //    set
+        //    {
+        //        if (_parts != value)
+        //        {
+        //            _parts = value;
+        //            OnPropertyChanged(nameof(Parts));
+        //        }
+        //    }
+        //}
+        //public PartViewModel()
+        //{
+        //    _parts = new ObservableCollection<Part>(PartDataAccess.GetPart());
+        //}
 
 
     }

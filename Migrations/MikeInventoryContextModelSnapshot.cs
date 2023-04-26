@@ -37,19 +37,19 @@ namespace MikeInventory.Migrations
                     b.Property<string>("PartTag")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("SupplierId")
+                    b.Property<int?>("SupplierID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UserId")
+                    b.Property<int?>("UserID")
                         .HasColumnType("int");
 
                     b.HasKey("PartId");
 
-                    b.HasIndex("SupplierId");
+                    b.HasIndex("SupplierID");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserID");
 
-                    b.ToTable("Parts", (string)null);
+                    b.ToTable("Parts");
                 });
 
             modelBuilder.Entity("MikeInventory.Models.Supplier", b =>
@@ -75,7 +75,7 @@ namespace MikeInventory.Migrations
 
                     b.HasKey("SupplierId");
 
-                    b.ToTable("Suppliers", (string)null);
+                    b.ToTable("Suppliers");
                 });
 
             modelBuilder.Entity("MikeInventory.Models.Tool", b =>
@@ -83,7 +83,7 @@ namespace MikeInventory.Migrations
                     b.Property<int>("ToolId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("SupplierId")
+                    b.Property<int?>("SupplierID")
                         .HasColumnType("int");
 
                     b.Property<string>("ToolDescription")
@@ -96,16 +96,16 @@ namespace MikeInventory.Migrations
                     b.Property<string>("ToolTag")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("UserId")
+                    b.Property<int?>("UserID")
                         .HasColumnType("int");
 
                     b.HasKey("ToolId");
 
-                    b.HasIndex("SupplierId");
+                    b.HasIndex("SupplierID");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserID");
 
-                    b.ToTable("Tools", (string)null);
+                    b.ToTable("Tools");
                 });
 
             modelBuilder.Entity("MikeInventory.Models.User", b =>
@@ -130,29 +130,37 @@ namespace MikeInventory.Migrations
 
                     b.HasKey("UserId");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("MikeInventory.Models.Part", b =>
                 {
-                    b.HasOne("MikeInventory.Models.Supplier", null)
+                    b.HasOne("MikeInventory.Models.Supplier", "Supplier")
                         .WithMany("Parts")
-                        .HasForeignKey("SupplierId");
+                        .HasForeignKey("SupplierID");
 
-                    b.HasOne("MikeInventory.Models.User", null)
+                    b.HasOne("MikeInventory.Models.User", "User")
                         .WithMany("Parts")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserID");
+
+                    b.Navigation("Supplier");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("MikeInventory.Models.Tool", b =>
                 {
-                    b.HasOne("MikeInventory.Models.Supplier", null)
+                    b.HasOne("MikeInventory.Models.Supplier", "Supplier")
                         .WithMany("Tools")
-                        .HasForeignKey("SupplierId");
+                        .HasForeignKey("SupplierID");
 
-                    b.HasOne("MikeInventory.Models.User", null)
+                    b.HasOne("MikeInventory.Models.User", "User")
                         .WithMany("Tools")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserID");
+
+                    b.Navigation("Supplier");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("MikeInventory.Models.Supplier", b =>

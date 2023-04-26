@@ -17,5 +17,11 @@ namespace MikeInventory.Models
         public int? ToolQuantity { get; set; }     
         public string? ToolTag { get; set; }
 
+        public int? SupplierID { get; set; }
+        public Supplier? Supplier { get; set; }
+
+        public int? UserID { get; set; }
+        public User? User { get; set; }
+
     }
 }

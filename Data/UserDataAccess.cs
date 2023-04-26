@@ -1,32 +1,32 @@
-﻿using System;
+﻿using MikeInventory.Models;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Threading.Tasks.Dataflow;
-using MikeInventory.Data;
-using MikeInventory.Models;
 
 
 namespace MikeInventory.Data
 {
-    
+
     public class UserDataAccess
     {
 
         //Create new record in People table
         public static void AddUser()
         {
-            var context = new MikeInventoryContext();
+            using var context = new MikeInventoryContext();
 
             var db = new User
             {
-                FirstName = "Nora",
+                UserId = 101,
+                FirstName = "Michael",
+                LastName = "Anderson",
+                UserPhoneNo = "071234343",
+                UserEmail = "michael@melnora.co.uk",
+                UserTag = "michael"
             };
-            context.Users.Add(db);
-            context.SaveChanges();
-             
+                context.Users.Add(db);
+                context.SaveChanges();
+            
+            
         }
 
         //Read all records in People table

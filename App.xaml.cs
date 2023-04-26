@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Query.Internal;
-using MikeInventory.Views;
+using MikeInventory.ViewModels;
 using System.Windows;
 
 namespace MikeInventory
@@ -9,18 +9,16 @@ namespace MikeInventory
     /// </summary>
     public partial class App : Application
     {
+        //protected override void OnStartup(StartupEventArgs e)
+        //{
+        //    MainWindow = new MainWindow()
+        //    {
+        //        DataContext = new MainViewModel()             
+        //    };
+        //    MainWindow.Show();
 
-        protected override void OnStartup(StartupEventArgs e)
-        {
-            MainWindow = new MainWindow()
-            {
-                DataContext = new MainViewModel()             
-            };
-            MainWindow.Show();
-
-            base.OnStartup(e);
-        }
-
+        //    base.OnStartup(e);
+        //}
 
     }
 }

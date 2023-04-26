@@ -1,10 +1,7 @@
 ﻿using MikeInventory.Models;
-using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace MikeInventory.Data
 {
@@ -12,14 +9,18 @@ namespace MikeInventory.Data
     {
         public static void AddPart()
         {
-            var context = new MikeInventoryContext();
-
+            
+            
+            using var context = new MikeInventoryContext();
             var db = new Part
             {
-                PartId = 107,
-                PartDescription = "Masking Tape",
+
+                PartId = 109,
+                PartDescription = "Double Tape",
                 PartQuantity = 5,
-                PartTag = "Masking tape",
+                PartTag = "double tape",
+                UserID = 100,              
+                
             };
             context.Parts.Add(db);
             context.SaveChanges();

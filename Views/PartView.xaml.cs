@@ -8,17 +8,13 @@ using System.Windows.Controls;
 
 namespace MikeInventory.Views
 {
-    /// <summary>
-    /// Interaction logic for PartView.xaml
-    /// </summary>
+
     public partial class PartView : UserControl
     {
-        //public ObservableCollection<Part>? parts;
+
         public PartView()
         {
             InitializeComponent();
-            //parts = new ObservableCollection<Part>(PartDataAccess.GetPart());
-            //DatagridPart.ItemsSource = parts;
 
         }
 

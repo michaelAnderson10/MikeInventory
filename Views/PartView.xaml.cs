@@ -1,5 +1,6 @@
 ﻿using MikeInventory.Data;
 using MikeInventory.Models;
+using MikeInventory.ViewModels;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
@@ -17,10 +18,10 @@ namespace MikeInventory.Views
             InitializeComponent();
 
         }
-
-        private void BtnCreatePart_Click(object sender, RoutedEventArgs e)
-        {
-            PartDataAccess.AddPart();
-        }
+     
     }
 }
+
+
+
+

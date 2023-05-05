@@ -17,8 +17,7 @@ namespace MikeInventory
 
         public MainWindow()
         {
-            InitializeComponent();
-        
+            InitializeComponent();       
         }
 
         private void BtnSearch_Click(object sender, RoutedEventArgs e)

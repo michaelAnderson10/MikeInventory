@@ -37,12 +37,12 @@
                 <Button x:Name="BtnClearUser"  Content="Clear"/>
             </StackPanel>
             <StackPanel Grid.Row="3" Orientation="Horizontal">
-                <TextBox  x:Name="TxtIdUser" />
-                <TextBox  x:Name="TxtFirstName" />
-                <TextBox x:Name="TxtLastName" />
-                <TextBox  x:Name="TxtPhoneUser" />
-                <TextBox x:Name="TxtEmailUser"  />
-                <TextBox x:Name="TxtTagUser" />
+                <TextBox  x:Name="TxtIdUser" Text="{Binding UserId, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox  x:Name="TxtFirstName" Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBox x:Name="TxtLastName" Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox  x:Name="TxtPhoneUser" Text="{Binding UserPhoneNo, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox x:Name="TxtEmailUser"  Text="{Binding UserEmail, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox x:Name="TxtTagUser" Text="{Binding UserTag,UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
             <StackPanel Grid.Row="2" Orientation="Horizontal">
                 <TextBlock Text="User Id" />
@@ -58,10 +58,19 @@
                 <TextBox x:Name="TxtSearchUser" Height="20" Width="150"/>
             </StackPanel>
 
-            <DataGrid Grid.Row="4" Grid.Column="1" x:Name="DatagridUser" Margin="5" ItemsSource="{Binding Users}" />
-
+            <!--<DataGrid Grid.Row="4" Grid.Column="1" x:Name="DatagridUser" Margin="5" ItemsSource="{Binding Users}" />-->
+            <Grid Grid.Row="4">
+                <DataGrid x:Name="DatagridUser" ItemsSource="{Binding Users}" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="User Id" Binding="{Binding UserId}"/>
+                        <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}"/>
+                        <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}"/>
+                        <DataGridTextColumn Header="Phone No" Binding="{Binding UserPhoneNo}"/>
+                        <DataGridTextColumn Header="Email" Binding="{Binding UserEmail}"/>
+                        <DataGridTextColumn Header="Tags" Binding="{Binding UserTag}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
         </Grid>
-
     </Grid>
-
 </UserControl>

@@ -1,44 +1,54 @@
-﻿<UserControl x:Class="MikeInventory.Views.MyTextView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:MikeInventory.Views"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+﻿<UserControl
+    x:Class="MikeInventory.Views.MyTextView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:MikeInventory.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
 
-    
+
     <ContentControl>
 
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="77*"/>
+                <RowDefinition Height="77*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="5"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="2*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="10*" />
                 </Grid.RowDefinitions>
 
-                <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left">
-                    <Button x:Name="BtnTXXXXX" Content="Mike"/>
-                    <Button x:Name="BtnRead" Content="Unallocated"/>
-                    <Button x:Name="BtnUpdate" Content="Unallocated"/>
-                    <Button x:Name="BtnDelete" Content="Unallocated"/>
+                <StackPanel
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    HorizontalAlignment="Left"
+                    Orientation="Horizontal">
+                    <Button x:Name="BtnTXXXXX" Content="Mike" />
+                    <Button x:Name="BtnRead" Content="Unallocated" />
+                    <Button x:Name="BtnUpdate" Content="Unallocated" />
+                    <Button x:Name="BtnDelete" Content="Unallocated" />
                 </StackPanel>
                 <StackPanel Grid.Row="3" Orientation="Horizontal">
-                    <ComboBox x:Name="CmbCategory" Height="20" Width="100" Margin="5 1 1 5" />
-                    <TextBox  x:Name="TxtId" />
-                    <TextBox  x:Name="TxtDescription" />
-                    <TextBox  x:Name="TxtQty" />
-                    <TextBox x:Name="TxtSupplier"  />
+                    <ComboBox
+                        x:Name="CmbCategory"
+                        Width="100"
+                        Height="20"
+                        Margin="5,1,1,5" />
+                    <TextBox x:Name="TxtId" />
+                    <TextBox x:Name="TxtDescription" />
+                    <TextBox x:Name="TxtQty" />
+                    <TextBox x:Name="TxtSupplier" />
                     <TextBox x:Name="TxtTag" />
                 </StackPanel>
                 <StackPanel Grid.Row="2" Orientation="Horizontal">
@@ -50,14 +60,21 @@
                     <TextBlock Text="Tags" />
                 </StackPanel>
 
-                <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button x:Name="BtnSearch" Content="Search"/>
-                    <TextBox x:Name="TxtSearch" Height="20" Width="150"/>
+                <StackPanel
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    HorizontalAlignment="Right"
+                    Orientation="Horizontal">
+                    <Button x:Name="BtnSearch" Content="Search" />
+                    <TextBox
+                        x:Name="TxtSearch"
+                        Width="150"
+                        Height="20" />
                 </StackPanel>
-                
+
 
                 <!--<DataGrid Grid.Row="4" Grid.Column="1" x:Name="DatagridMain" Margin="5"/>-->
-                
+
 
             </Grid>
         </Grid>

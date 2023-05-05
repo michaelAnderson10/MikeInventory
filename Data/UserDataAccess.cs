@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 
-
 namespace MikeInventory.Data
 {
 
@@ -16,17 +15,17 @@ namespace MikeInventory.Data
 
             var db = new User
             {
-                UserId = 101,
+                UserId = 102,
                 FirstName = "Michael",
                 LastName = "Anderson",
                 UserPhoneNo = "071234343",
                 UserEmail = "michael@melnora.co.uk",
-                UserTag = "michael"
+                UserTag = "michael"               
             };
                 context.Users.Add(db);
                 context.SaveChanges();
             
-            
+           
         }
 
         //Read all records in People table

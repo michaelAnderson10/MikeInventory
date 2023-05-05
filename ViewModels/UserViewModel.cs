@@ -89,12 +89,14 @@ namespace MikeInventory.ViewModels
             }
             
         }
-
+        
 
         public ObservableCollection<User> Users { get; set; }
-        public UserViewModel() 
+        public UserViewModel()
         {
             Users = new ObservableCollection<User>(Data.UserDataAccess.GetUser());
         }
+
     }
 }
+ 

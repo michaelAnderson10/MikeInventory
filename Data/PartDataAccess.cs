@@ -1,4 +1,5 @@
 ﻿using MikeInventory.Models;
+using MikeInventory.Views;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -7,24 +8,61 @@ namespace MikeInventory.Data
 {
     public class PartDataAccess
     {
-        public static void AddPart()
+
+
+        public static void AddPart(int partId, string partDescription, int partQuantity, string partTag, int userId)
         {
-            
-            
+
             using var context = new MikeInventoryContext();
             var db = new Part
             {
 
-                PartId = 109,
-                PartDescription = "Double Tape",
-                PartQuantity = 5,
-                PartTag = "double tape",
-                UserID = 100,              
-                
+                PartId = partId,
+                PartDescription = partDescription,
+                PartQuantity = partQuantity,
+                PartTag = partTag,
+                UserID = userId,
+
+                //PartId = 120,
+                //PartDescription = "test description",
+                //PartQuantity = 15,
+                //PartTag = "tag fot the part",
+                //UserID = 101,
+
             };
             context.Parts.Add(db);
             context.SaveChanges();
         }
+
+        //public static void AddPart()
+        //{
+
+        //    using var context = new MikeInventoryContext();
+        //    var db = new Part
+        //    {
+
+        //        PartId = 120,
+        //        PartDescription = "Microscope",
+        //        PartQuantity = 1,
+        //        PartTag = "Am scope",
+        //        UserID = 101,
+
+        //    };
+        //    context.Parts.Add(db);
+        //    context.SaveChanges();
+        //}
+
+        //public static void AddPart(Part part)
+        //{
+        //    using var context = new MikeInventoryContext();
+        //    context.Parts.Add(part);
+        //    context.SaveChanges();
+        //}
+
+
+
+
+
 
         ////Read all records in People table
         public static List<Part> GetPart()
@@ -34,6 +72,7 @@ namespace MikeInventory.Data
                 return db.Parts.ToList();
             }
         }
+
         //public ObservableCollection<Part>? parts;
         //public PartDataAccess()
         //{

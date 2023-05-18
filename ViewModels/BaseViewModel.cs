@@ -18,3 +18,4 @@ namespace MikeInventory.ViewModels
         public virtual void Dispose() { }
     }
 }
+

@@ -1,6 +1,8 @@
 ﻿using MikeInventory.Models;
+using MikeInventory.ViewModels;
 using MikeInventory.Views;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 
 
@@ -8,8 +10,7 @@ namespace MikeInventory.Data
 {
     public class PartDataAccess
     {
-
-
+       
         public static void AddPart(int partId, string partDescription, int partQuantity, string partTag, int userId)
         {
 
@@ -22,16 +23,10 @@ namespace MikeInventory.Data
                 PartQuantity = partQuantity,
                 PartTag = partTag,
                 UserID = userId,
-
-                //PartId = 120,
-                //PartDescription = "test description",
-                //PartQuantity = 15,
-                //PartTag = "tag fot the part",
-                //UserID = 101,
-
+              
             };
             context.Parts.Add(db);
-            context.SaveChanges();
+            context.SaveChanges();         
         }
 
         //public static void AddPart()
@@ -62,16 +57,25 @@ namespace MikeInventory.Data
 
 
 
-
-
-        ////Read all records in People table
-        public static List<Part> GetPart()
+        ////Read all records in People table       
+        public ObservableCollection<Part>? Parts { get; set; }
+        public static ObservableCollection<Part> GetPart()
         {
             using (var db = new MikeInventoryContext())
             {
-                return db.Parts.ToList();
+                return new ObservableCollection<Part>(db.Parts.ToList());
             }
         }
+
+
+
+        //public static List<Part> GetPart()
+        //{
+        //    using (var db = new MikeInventoryContext())
+        //    {
+        //        return db.Parts.ToList();
+        //    }
+        //}
 
         //public ObservableCollection<Part>? parts;
         //public PartDataAccess()

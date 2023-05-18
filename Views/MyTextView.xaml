@@ -73,7 +73,11 @@
                 </StackPanel>
 
 
-                <!--<DataGrid Grid.Row="4" Grid.Column="1" x:Name="DatagridMain" Margin="5"/>-->
+                <DataGrid
+                    x:Name="DatagridMain"
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    Margin="5" />
 
 
             </Grid>

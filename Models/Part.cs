@@ -13,10 +13,9 @@ namespace MikeInventory.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int PartId { get; set; }
-        public string PartDescription { get; set; } = null!;
+        public string PartDescription { get; set; }
         public int? PartQuantity { get; set; }
         public string? PartTag { get; set; }
-
 
         
         public int? SupplierID { get; set; }

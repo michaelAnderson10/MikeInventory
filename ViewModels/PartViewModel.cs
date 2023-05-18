@@ -7,6 +7,8 @@ using System.Diagnostics;
 using System.IO.Packaging;
 using System.Linq.Expressions;
 using System.Reflection.Metadata;
+using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 
 namespace MikeInventory.ViewModels
@@ -15,7 +17,7 @@ namespace MikeInventory.ViewModels
     {
 
         private int _partId;
-        public int PartId
+        public int PartIdToDb
         {
             get
             {
@@ -24,7 +26,7 @@ namespace MikeInventory.ViewModels
             set
             {
                 _partId = value;
-                OnPropertyChanged(nameof(PartId));
+                OnPropertyChanged(nameof(PartIdToDb));
             }
         }
 
@@ -74,7 +76,10 @@ namespace MikeInventory.ViewModels
         private int _userIdToDb;
         public int UserIdToDb
         {
-            get { return _userIdToDb; }
+            get 
+            {
+                return _userIdToDb;
+            }
             set
             {
                 _userIdToDb = value;
@@ -82,8 +87,34 @@ namespace MikeInventory.ViewModels
             }
         }
 
+        ////Binding property to UserId ComboBox in PartView
+        public ObservableCollection<User> Users { get; set; }
 
-        //// Provide binding property for PartView DataGrid
+
+        //// Construction
+        public PartViewModel()
+        {
+            //_parts = PartDataAccess.GetPart();          
+            //_parts = new ObservableCollection<Part>(PartDataAccess.GetPart());
+
+            PartData = new PartDataAccess();
+            LoadPart();
+
+            Users = new ObservableCollection<User>(Data.UserDataAccess.GetUser());
+            //OnPropertyChanged(nameof(Users));
+
+            CreateCommand = new PartCommand(this);
+
+        }
+
+        PartDataAccess PartData;
+        public void LoadPart()
+        {
+            _parts = new ObservableCollection<Part>(PartDataAccess.GetPart());
+        }
+
+
+        // Binding property for PartView DataGrid
         private ObservableCollection<Part> _parts;
         public ObservableCollection<Part> Parts
         {
@@ -92,11 +123,10 @@ namespace MikeInventory.ViewModels
                 return _parts;
             }
             set
-            {
-
+            {            
                 _parts = value;
                 OnPropertyChanged(nameof(Parts));
-
+                
             }
         }
 
@@ -106,31 +136,11 @@ namespace MikeInventory.ViewModels
         public ICommand DeleteCommand { get; }
         public ICommand ClearCommand { get; }
         public ICommand SearchCommand { get; }
-   
 
 
-        ////Binding property to UserId ComboBox in PartView
-        public ObservableCollection<User> Users { get; set; }
 
 
-        //// Construction
-        public PartViewModel()
-        {
-            
-            _parts = new ObservableCollection<Part>(PartDataAccess.GetPart());
-            OnPropertyChanged(nameof(Parts));
-
-            Users = new ObservableCollection<User>(Data.UserDataAccess.GetUser());
-            OnPropertyChanged(nameof(Users));
-
-            CreateCommand = new PartCommand(this);
-
-        }
-
-        public void PartCreatorViewModel()
-        {
-            CreateCommand.Execute(null);
-        }
 
     }
+      
 }

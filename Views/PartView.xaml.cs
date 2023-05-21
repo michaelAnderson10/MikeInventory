@@ -15,8 +15,7 @@ namespace MikeInventory.Views
 
         public PartView()
         {
-            InitializeComponent();
-            //DataContext = new PartViewModel();                      
+            InitializeComponent();                     
         }
 
     }

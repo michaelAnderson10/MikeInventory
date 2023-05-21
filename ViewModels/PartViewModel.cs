@@ -94,23 +94,17 @@ namespace MikeInventory.ViewModels
         //// Construction
         public PartViewModel()
         {
-            //_parts = PartDataAccess.GetPart();          
-            //_parts = new ObservableCollection<Part>(PartDataAccess.GetPart());
+            _parts = PartDataAccess.GetPart();
 
-            PartData = new PartDataAccess();
-            LoadPart();
-
-            Users = new ObservableCollection<User>(Data.UserDataAccess.GetUser());
-            //OnPropertyChanged(nameof(Users));
+            Users = new ObservableCollection<User>(Data.UserDataAccess.GetUser());          
 
             CreateCommand = new PartCommand(this);
 
         }
 
-        PartDataAccess PartData;
         public void LoadPart()
         {
-            _parts = new ObservableCollection<Part>(PartDataAccess.GetPart());
+            this.Parts = new ObservableCollection<Part>(PartDataAccess.GetPart());
         }
 
 

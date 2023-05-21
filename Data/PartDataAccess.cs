@@ -9,21 +9,17 @@ using System.Linq;
 namespace MikeInventory.Data
 {
     public class PartDataAccess
-    {
-       
+    {     
         public static void AddPart(int partId, string partDescription, int partQuantity, string partTag, int userId)
         {
-
             using var context = new MikeInventoryContext();
             var db = new Part
             {
-
                 PartId = partId,
                 PartDescription = partDescription,
                 PartQuantity = partQuantity,
                 PartTag = partTag,
-                UserID = userId,
-              
+                UserID = userId,             
             };
             context.Parts.Add(db);
             context.SaveChanges();         

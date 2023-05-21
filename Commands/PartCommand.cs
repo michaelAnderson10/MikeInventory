@@ -14,22 +14,18 @@ namespace MikeInventory.Commands
 {
     public class PartCommand : BaseCommand
     {
-
         private readonly PartViewModel _viewModel;
-
         public PartCommand(PartViewModel viewModel)
         {
-            _viewModel = viewModel;
-            
+            _viewModel = viewModel;            
         }
 
         public override void Execute(object? parameter)
         {          
             PartDataAccess.AddPart(_viewModel.PartIdToDb, _viewModel.PartDescription, _viewModel.PartQuantity, _viewModel.PartTag, _viewModel.UserIdToDb);
             _viewModel.LoadPart();
-            
-        }
 
+        }
 
     }   
 }

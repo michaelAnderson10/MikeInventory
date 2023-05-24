@@ -26,13 +26,23 @@ namespace MikeInventory.Commands
 
         public void Execute(object? parameter)
         {
-            if(parameter.ToString() == "SwitchToPart")
+            switch (parameter.ToString())
             {
-               viewModel.CurrentViewModel = new PartViewModel();
-            }
-            else if(parameter.ToString() == "SwitchToUser")
-            {
-                viewModel.CurrentViewModel = new UserViewModel();
+                case "SwitchToHome":
+                    viewModel.CurrentViewModel = new HomeViewModel();
+                    break;
+                case "SwitchToTool":
+                    viewModel.CurrentViewModel = new ToolViewModel();
+                    break;
+                case "SwitchToPart":
+                    viewModel.CurrentViewModel = new PartViewModel();
+                    break;
+                case "SwitchToSupplier":
+                    viewModel.CurrentViewModel = new SupplierViewModel();
+                    break;
+                case "SwitchToUser":
+                    viewModel.CurrentViewModel = new UserViewModel();
+                    break;
             }
         }
     }

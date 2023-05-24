@@ -9,13 +9,21 @@
 
     <Application.Resources>
         <ResourceDictionary>
+            <DataTemplate DataType="{x:Type viewmodels:HomeViewModel}">
+                <views:HomeView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:ToolViewModel}">
+                <views:ToolView />
+            </DataTemplate>
             <DataTemplate DataType="{x:Type viewmodels:PartViewModel}">
                 <views:PartView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:SupplierViewModel}">
+                <views:SupplierView />
             </DataTemplate>
             <DataTemplate DataType="{x:Type viewmodels:UserViewModel}">
                 <views:UserView />
             </DataTemplate>
-
 
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Styles/ButtonStyles.xaml" />

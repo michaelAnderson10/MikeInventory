@@ -9,23 +9,21 @@ namespace MikeInventory.Data
     {
 
         //Create new record in People table
-        public static void AddUser()
+        public static void AddUser(int userId, string firstName, string lastName, string phoneNo, string email, string userTag)
         {
             using var context = new MikeInventoryContext();
 
             var db = new User
             {
-                UserId = 102,
-                FirstName = "Michael",
-                LastName = "Anderson",
-                UserPhoneNo = "071234343",
-                UserEmail = "michael@melnora.co.uk",
-                UserTag = "michael"               
+                UserId = userId,
+                FirstName = firstName,
+                LastName = lastName,
+                UserPhoneNo = phoneNo,
+                UserEmail = email,
+                UserTag = userTag               
             };
                 context.Users.Add(db);
-                context.SaveChanges();
-            
-           
+                context.SaveChanges();                     
         }
 
         //Read all records in People table

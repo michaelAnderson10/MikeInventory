@@ -22,7 +22,7 @@ namespace MikeInventory.Commands
 
         public override void Execute(object? parameter)
         {          
-            PartDataAccess.AddPart(_viewModel.PartIdToDb, _viewModel.PartDescription, _viewModel.PartQuantity, _viewModel.PartTag, _viewModel.UserIdToDb);
+            PartDataAccess.AddPart(_viewModel.PartIdToDb, _viewModel.PartDescription, _viewModel.PartQuantity, _viewModel.SupplierIdToDb, _viewModel.PartTag, _viewModel.UserIdToDb);
             _viewModel.LoadPart();
 
         }

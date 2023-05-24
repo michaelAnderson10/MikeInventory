@@ -10,7 +10,7 @@ namespace MikeInventory.Data
 {
     public class PartDataAccess
     {     
-        public static void AddPart(int partId, string partDescription, int partQuantity, string partTag, int userId)
+        public static void AddPart(int partId, string partDescription, int partQuantity, int supplierId, string partTag, int userId)
         {
             using var context = new MikeInventoryContext();
             var db = new Part
@@ -18,39 +18,13 @@ namespace MikeInventory.Data
                 PartId = partId,
                 PartDescription = partDescription,
                 PartQuantity = partQuantity,
+                SupplierID = supplierId,
                 PartTag = partTag,
                 UserID = userId,             
             };
             context.Parts.Add(db);
             context.SaveChanges();         
         }
-
-        //public static void AddPart()
-        //{
-
-        //    using var context = new MikeInventoryContext();
-        //    var db = new Part
-        //    {
-
-        //        PartId = 120,
-        //        PartDescription = "Microscope",
-        //        PartQuantity = 1,
-        //        PartTag = "Am scope",
-        //        UserID = 101,
-
-        //    };
-        //    context.Parts.Add(db);
-        //    context.SaveChanges();
-        //}
-
-        //public static void AddPart(Part part)
-        //{
-        //    using var context = new MikeInventoryContext();
-        //    context.Parts.Add(part);
-        //    context.SaveChanges();
-        //}
-
-
 
 
         ////Read all records in People table       

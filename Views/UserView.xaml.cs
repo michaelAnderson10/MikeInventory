@@ -11,20 +11,10 @@ namespace MikeInventory.Views
     /// </summary>
     public partial class UserView : UserControl
     {
-        //public ObservableCollection<User> users;
         public UserView()
         {
-            InitializeComponent();
-                      
-            //users = new ObservableCollection<User>(UserDataAccess.GetUser());
-
-            //DatagridUser.ItemsSource = users;
-           
+            InitializeComponent();                                
         }
 
-        private void BtnCreateUser_Click(object sender, RoutedEventArgs e)
-        {
-            Data.UserDataAccess.AddUser();
-        }
     }
 }

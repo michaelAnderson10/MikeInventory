@@ -72,7 +72,7 @@ namespace MikeInventory.ViewModels
             }
         }
 
-        //// Binding property from ComboBox to DB
+        //// Binding property from User ComboBox to DB
         private int _userIdToDb;
         public int UserIdToDb
         {
@@ -87,26 +87,17 @@ namespace MikeInventory.ViewModels
             }
         }
 
-        ////Binding property to UserId ComboBox in PartView
-        public ObservableCollection<User> Users { get; set; }
-
-
-        //// Construction
-        public PartViewModel()
+        //// Binding property from Supplier ComboBox to DB
+        private int _supplierIdToDb;
+        public int SupplierIdToDb
         {
-            _parts = PartDataAccess.GetPart();
-
-            Users = new ObservableCollection<User>(Data.UserDataAccess.GetUser());          
-
-            CreateCommand = new PartCommand(this);
-
+            get { return _supplierIdToDb; }
+            set
+            {
+                _supplierIdToDb = value;
+                OnPropertyChanged(nameof(SupplierIdToDb));
+            }
         }
-
-        public void LoadPart()
-        {
-            this.Parts = new ObservableCollection<Part>(PartDataAccess.GetPart());
-        }
-
 
         // Binding property for PartView DataGrid
         private ObservableCollection<Part> _parts;
@@ -117,13 +108,12 @@ namespace MikeInventory.ViewModels
                 return _parts;
             }
             set
-            {            
+            {
                 _parts = value;
                 OnPropertyChanged(nameof(Parts));
-                
+
             }
         }
-
 
         public PartCommand CreateCommand { get; }
         public ICommand UpdateCommand { get; }
@@ -132,8 +122,28 @@ namespace MikeInventory.ViewModels
         public ICommand SearchCommand { get; }
 
 
+        ////Binding property to UserId ComboBox in PartView
+        public ObservableCollection<User> Users { get; set; }
+        ////Binding property to SupplierId ComboBox in PartView
+        public ObservableCollection<Supplier> Suppliers { get; set; }
 
 
+        //// Construction
+        public PartViewModel()
+        {
+            _parts = PartDataAccess.GetPart();
+
+            Users = new ObservableCollection<User>(Data.UserDataAccess.GetUser());
+            Suppliers = new ObservableCollection<Supplier>(SupplierDataAccess.GetSupplier());
+
+            CreateCommand = new PartCommand(this);
+
+        }
+
+        public void LoadPart()
+        {
+            this.Parts = new ObservableCollection<Part>(PartDataAccess.GetPart());
+        }
 
     }
       

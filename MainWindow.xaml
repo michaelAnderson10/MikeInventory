@@ -25,14 +25,26 @@
             Margin="0,60,0,0"
             HorizontalAlignment="Center"
             Orientation="Vertical">
-            <Button x:Name="BtnHome" Content="Home" />
-            <Button x:Name="BtnTool" Content="Tool" />
+            <Button
+                x:Name="BtnHome"
+                Command="{Binding SwitchViewCommand}"
+                CommandParameter="SwitchToHome"
+                Content="Home" />
+            <Button
+                x:Name="BtnTool"
+                Command="{Binding SwitchViewCommand}"
+                CommandParameter="SwitchToTool"
+                Content="Tool" />
             <Button
                 x:Name="BtnPart"
                 Command="{Binding SwitchViewCommand}"
                 CommandParameter="SwitchToPart"
                 Content="Part" />
-            <Button x:Name="BtnSupplier" Content="Supplier" />
+            <Button
+                x:Name="BtnSupplier"
+                Command="{Binding SwitchViewCommand}"
+                CommandParameter="SwitchToSupplier"
+                Content="Supplier" />
             <Button
                 x:Name="BtnUser"
                 Command="{Binding SwitchViewCommand}"

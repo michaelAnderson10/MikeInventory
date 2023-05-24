@@ -1,10 +1,12 @@
-﻿using MikeInventory.Models;
+﻿using MikeInventory.Commands;
+using MikeInventory.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MikeInventory.Data;
 
 namespace MikeInventory.ViewModels
 {
@@ -66,13 +68,13 @@ namespace MikeInventory.ViewModels
             }
         }
 
-        private string _userName;
+        private string _userEmail;
         public string UserEmail
         {
-            get { return _userName; }
+            get { return _userEmail; }
             set
             {
-                _userName = value;
+                _userEmail = value;
                 OnPropertyChanged(nameof(UserPhoneNo));
             }
 
@@ -81,20 +83,35 @@ namespace MikeInventory.ViewModels
         private string _userTag;
         public string UserTag
         {
-            get { return _userName; }
+            get { return _userTag; }
             set
             {
-                _userName = value;
+                _userTag = value;
                 OnPropertyChanged(nameof(UserTag));
             }
             
         }
-        
+              
 
-        public ObservableCollection<User> Users { get; set; }
+        private List<User> _users;
+        public List<User> Users
+        {
+            get
+            {
+                return _users;
+            }
+            set
+            {
+                _users = value;
+                OnPropertyChanged(nameof(Users));
+            }
+        }
+
+        public UserCommand CreateUserCommand { get; set; }
         public UserViewModel()
         {
-            Users = new ObservableCollection<User>(Data.UserDataAccess.GetUser());
+            CreateUserCommand = new UserCommand(this);
+            _users = UserDataAccess.GetUser();
         }
 
     }

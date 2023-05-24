@@ -63,7 +63,12 @@
                 <TextBox x:Name="TxtIdPart" Text="{Binding PartIdToDb, UpdateSourceTrigger=PropertyChanged}" />
                 <TextBox x:Name="TxtDescriptionPart" Text="{Binding PartDescription, UpdateSourceTrigger=PropertyChanged}" />
                 <TextBox x:Name="TxtQtyPart" Text="{Binding PartQuantity, UpdateSourceTrigger=PropertyChanged}" />
-                <ComboBox x:Name="cmbSupplierPart" />
+                <ComboBox
+                    x:Name="cmbSupplierPart"
+                    DisplayMemberPath="SupplierName"
+                    ItemsSource="{Binding Suppliers}"
+                    SelectedValue="{Binding SupplierIdToDb}"
+                    SelectedValuePath="SupplierId" />
                 <TextBox x:Name="TxtTagPart" Text="{Binding PartTag, UpdateSourceTrigger=PropertyChanged}" />
                 <ComboBox
                     x:Name="CmbUserPart"
@@ -107,6 +112,7 @@
                         <DataGridTextColumn Binding="{Binding PartId, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="Part No" />
                         <DataGridTextColumn Binding="{Binding PartDescription, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="Description" />
                         <DataGridTextColumn Binding="{Binding PartQuantity, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="Quantity" />
+                        <DataGridTextColumn Binding="{Binding SupplierID, UpdateSourceTrigger=PropertyChanged}" Header="Supplier" />
                         <DataGridTextColumn Binding="{Binding PartTag, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="Tags" />
                         <DataGridTextColumn Binding="{Binding UserID, UpdateSourceTrigger=PropertyChanged}" Header="Added by" />
                     </DataGrid.Columns>

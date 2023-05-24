@@ -37,18 +37,22 @@
                 Grid.Column="1"
                 HorizontalAlignment="Left"
                 Orientation="Horizontal">
-                <Button x:Name="BtnCreateSupplier" Content="Create" />
+                <Button
+                    x:Name="BtnCreateSupplier"
+                    Command="{Binding CreateSupplierCommand}"
+                    Content="Create" />
+
                 <Button x:Name="BtnUpdateSupplier" Content="Update" />
                 <Button x:Name="BtnDeleteSupplier" Content="Delete" />
                 <Button x:Name="BtnClearSupplier" Content="Clear" />
             </StackPanel>
             <StackPanel Grid.Row="3" Orientation="Horizontal">
-                <TextBox x:Name="TxtIdSupplier" />
-                <TextBox x:Name="TxtDescriptionSupplier" />
-                <TextBox x:Name="TxtAddressSupplier" />
-                <TextBox x:Name="TxtPhoneSupplier" />
-                <TextBox x:Name="TxtEmailSupplier" />
-                <TextBox x:Name="TxtTagSupplier" />
+                <TextBox x:Name="TxtIdSupplier" Text="{Binding SupplierId, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBox x:Name="TxtDescriptionSupplier" Text="{Binding SupplierName, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBox x:Name="TxtAddressSupplier" Text="{Binding SupplierAddress, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBox x:Name="TxtPhoneSupplier" Text="{Binding SupplierPhone, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBox x:Name="TxtEmailSupplier" Text="{Binding SupplierEmail, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBox x:Name="TxtTagSupplier" Text="{Binding SupplierTags, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
             <StackPanel Grid.Row="2" Orientation="Horizontal">
                 <TextBlock Text="Supplier Id" />
@@ -70,12 +74,21 @@
                     Width="150"
                     Height="20" />
             </StackPanel>
+            <Grid Grid.Row="4">
+                <DataGrid
+                    x:Name="DatagridSupplier"
+                    AutoGenerateColumns="False"
+                    ItemsSource="{Binding Suppliers}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding SupplierId}" Header="Supplier Id" />
+                        <DataGridTextColumn Binding="{Binding SupplierName}" Header="Supplier Name" />
+                        <DataGridTextColumn Binding="{Binding SupplierAddress}" Header="Supplier Address" />
+                        <DataGridTextColumn Binding="{Binding SupplierEmail}" Header="Email" />
+                        <DataGridTextColumn Binding="{Binding SupplierTag}" Header="Tags" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
 
-            <DataGrid
-                x:Name="DatagridSupplier"
-                Grid.Row="4"
-                Grid.Column="1"
-                Margin="5" />
 
         </Grid>
 

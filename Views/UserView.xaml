@@ -44,7 +44,7 @@
                 Orientation="Horizontal">
                 <Button
                     x:Name="BtnCreateUser"
-                    Click="BtnCreateUser_Click"
+                    Command="{Binding CreateUserCommand}"
                     Content="Create" />
                 <Button x:Name="BtnUpdateUser" Content="Update" />
                 <Button x:Name="BtnDeleteUser" Content="Delete" />

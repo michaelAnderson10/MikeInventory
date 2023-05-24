@@ -67,15 +67,28 @@
                     Height="20" />
             </StackPanel>
 
-            <DataGrid
-                x:Name="DatagridHome"
-                Grid.Row="4"
-                Grid.Column="1"
-                Margin="5" />
+            <Grid Grid.Row="4">
+                <DataGrid
+                    x:Name="DatagridHome"
+                    AutoGenerateColumns="False"
+                    ItemsSource="{Binding AllComponents, UpdateSourceTrigger=PropertyChanged}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding PartAndToolId, UpdateSourceTrigger=PropertyChanged}" Header="Part No" />
+                        <DataGridTextColumn Binding="{Binding PartAndToolDescription, UpdateSourceTrigger=PropertyChanged}" Header="Description" />
+                        <DataGridTextColumn Binding="{Binding PartAndToolQuantity, UpdateSourceTrigger=PropertyChanged}" Header="Quantity" />
+                        <DataGridTextColumn Binding="{Binding PartAndToolSupplierId, UpdateSourceTrigger=PropertyChanged}" Header="Supplier" />
+                        <DataGridTextColumn Binding="{Binding PartAndToolTags, UpdateSourceTrigger=PropertyChanged}" Header="Tags" />
+                        <DataGridTextColumn Binding="{Binding PartAndToolUserId, UpdateSourceTrigger=PropertyChanged}" Header="Added by" />
+                    </DataGrid.Columns>
+                </DataGrid>
 
+                <!--<DataGrid
+                    x:Name="DataGridHome"
+                    AutoGenerateColumns="True"
+                    ItemsSource="{Binding AllComponents, UpdateSourceTrigger=PropertyChanged}"/>-->
 
+            </Grid>
         </Grid>
-
     </Grid>
 
 

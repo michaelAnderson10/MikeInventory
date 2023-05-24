@@ -39,18 +39,28 @@
                 Grid.Column="1"
                 HorizontalAlignment="Left"
                 Orientation="Horizontal">
-                <Button x:Name="BtnCreateTool" Content="Create" />
+                <Button x:Name="BtnCreateTool" 
+                        Command="{Binding CreateToolCommand}"
+                        Content="Create" />
                 <Button x:Name="BtnUpdateTool" Content="Update" />
                 <Button x:Name="BtnDeleteTool" Content="Delete" />
                 <Button x:Name="BtnClearTool" Content="Clear" />
             </StackPanel>
             <StackPanel Grid.Row="3" Orientation="Horizontal">
-                <TextBox x:Name="TxtIdTool" />
-                <TextBox x:Name="TxtDescriptionTool" />
-                <TextBox x:Name="TxtQtyTool" />
-                <ComboBox x:Name="CmbSupplierTool" />
-                <TextBox x:Name="TxtTagTool" />
-                <ComboBox x:Name="CmbUserTool" />
+                <TextBox x:Name="TxtIdTool" Text="{Binding ToolId, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox x:Name="TxtDescriptionTool" Text="{Binding ToolDescription, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBox x:Name="TxtQtyTool" Text="{Binding ToolQuantity, UpdateSourceTrigger=PropertyChanged}"/>
+                <ComboBox x:Name="CmbSupplierTool" 
+                          DisplayMemberPath="SupplierName"
+                          ItemsSource="{Binding Suppliers}"
+                          SelectedValue="{Binding SupplierIdToDb}"
+                          SelectedValuePath="SupplierId"/>
+                <TextBox x:Name="TxtTagTool" Text="{Binding ToolTag, UpdateSourceTrigger=PropertyChanged}" />
+                <ComboBox x:Name="CmbUserTool" 
+                          DisplayMemberPath="FirstName"
+                          ItemsSource="{Binding Users}"
+                          SelectedValue="{Binding UserIdToDb}"
+                          SelectedValuePath="UserId"/>
             </StackPanel>
             <StackPanel Grid.Row="2" Orientation="Horizontal">
                 <TextBlock Text="Part No" />
@@ -73,13 +83,22 @@
                     Height="20" />
             </StackPanel>
 
-
-            <DataGrid
-                x:Name="DatagridTool"
-                Grid.Row="4"
-                Grid.Column="1"
-                Margin="5" />
-
+            <Grid Grid.Row="4">
+                <DataGrid 
+                    x:Name="DatagridTool"
+                    AutoGenerateColumns="False"
+                    ItemsSource="{Binding Tools, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding ToolId, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="Tool No"/>
+                        <DataGridTextColumn Binding="{Binding ToolDescription, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="Description"/>
+                        <DataGridTextColumn Binding="{Binding ToolQuantity, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="Quantity"/>
+                        <DataGridTextColumn Binding="{Binding SupplierID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="Supplier"/>
+                        <DataGridTextColumn Binding="{Binding ToolTag, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="Tags"/>
+                        <DataGridTextColumn Binding="{Binding UserID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="Added by"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+          
         </Grid>
 
     </Grid>

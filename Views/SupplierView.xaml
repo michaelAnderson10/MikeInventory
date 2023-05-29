@@ -18,10 +18,10 @@
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="2*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="22" />
+                <RowDefinition Height="35" />
                 <RowDefinition Height="10*" />
             </Grid.RowDefinitions>
 
@@ -39,12 +39,28 @@
                 Orientation="Horizontal">
                 <Button
                     x:Name="BtnCreateSupplier"
-                    Command="{Binding CreateSupplierCommand}"
+                    Command="{Binding SupplierCommand}"
+                    CommandParameter="CreateSupplier"
                     Content="Create" />
-
-                <Button x:Name="BtnUpdateSupplier" Content="Update" />
-                <Button x:Name="BtnDeleteSupplier" Content="Delete" />
-                <Button x:Name="BtnClearSupplier" Content="Clear" />
+                <Button
+                    x:Name="BtnUpdateSupplier"
+                    Command="{Binding SupplierCommand}"
+                    CommandParameter="UpdateSupplier"
+                    Content="Update" />
+                <Button
+                    x:Name="BtnDeleteSupplier"
+                    Command="{Binding SupplierCommand}"
+                    CommandParameter="DeleteSupplier"
+                    Content="Delete" />
+                <Button
+                    x:Name="BtnClearSupplier"
+                    Click="BtnClearSupplier_Click"
+                    Content="Clear" />
+                <!--<Button
+                    x:Name="BtnClearSupplier"
+                    Command="{Binding SupplierCommand}"
+                    CommandParameter="ClearSupplier"
+                    Content="Clear" />-->
             </StackPanel>
             <StackPanel Grid.Row="3" Orientation="Horizontal">
                 <TextBox x:Name="TxtIdSupplier" Text="{Binding SupplierId, UpdateSourceTrigger=PropertyChanged}" />
@@ -68,17 +84,27 @@
                 Grid.Column="1"
                 HorizontalAlignment="Right"
                 Orientation="Horizontal">
-                <Button x:Name="BtnSearchSupplier" Content="Search" />
+                <Button
+                    x:Name="BtnSearchSupplier"
+                    Command="{Binding SupplierCommand}"
+                    CommandParameter="SearchSupplier"
+                    Content="Search" />
                 <TextBox
                     x:Name="TxtSearchSupplier"
-                    Width="150"
-                    Height="20" />
+                    Width="115"
+                    Height="20"
+                    Text="{Binding SupplierSearch, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
             <Grid Grid.Row="4">
                 <DataGrid
                     x:Name="DatagridSupplier"
                     AutoGenerateColumns="False"
-                    ItemsSource="{Binding Suppliers}">
+                    IsReadOnly="True"
+                    ItemsSource="{Binding Suppliers}"
+                    MouseDoubleClick="DatagridSupplier_MouseDoubleClick"
+                    SelectedValue="{Binding SupplierSelectedId}"
+                    SelectedValuePath="SupplierId"
+                    SelectionMode="Single">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding SupplierId}" Header="Supplier Id" />
                         <DataGridTextColumn Binding="{Binding SupplierName}" Header="Supplier Name" />

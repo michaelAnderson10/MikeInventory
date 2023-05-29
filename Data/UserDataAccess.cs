@@ -36,32 +36,52 @@ namespace MikeInventory.Data
         }
 
         //Update a record in People table
-        public static void UpdateUser()
+        public static void UpdateUser(int userId, string firstName, string lastName, string phoneNo, string email, string userTag)
         {
-            User varUpdate = new User();
             using var db = new MikeInventoryContext();
-            varUpdate = db.Users.Where(x => x.UserId == 3).First();
-            varUpdate.FirstName = "Michael";
-            db.SaveChanges();  
+            User userToUpdate = db.Users.FirstOrDefault(x => x.UserId == userId);
+            if (userToUpdate != null)
+            {
+                userToUpdate.FirstName = firstName;
+                userToUpdate.LastName = lastName;
+                userToUpdate.UserPhoneNo = phoneNo;
+                userToUpdate.UserEmail = email;
+                userToUpdate.UserTag = userTag;
+                db.SaveChanges();
+            }
         }
 
 
-        //Delete record from People table  
-        public static void RemoveUser()
+        ////Delete record from People table
+        public static void RemoveUser(int userSelectedId)
         {
             User varRemove = new User();
             using var db = new MikeInventoryContext();
-            varRemove = db.Users.Where(x => x.UserId == 3).First();
+            varRemove = db.Users.Where(x => x.UserId == userSelectedId).First();
             db.Users.Remove(varRemove);
             db.SaveChanges();
         }
 
-        public static List<User> SearchUser()
+        public static List<User> SearchUser(string searchTerm)
         {
             using var db = new MikeInventoryContext();
-            return db.Users.Where(x => x.UserId == 3).ToList();
-
+            return db.Users.Where(x =>
+                x.UserId.ToString().Contains(searchTerm) ||
+                (x.FirstName != null && x.FirstName.Contains(searchTerm)) ||
+                (x.LastName != null && x.LastName.Contains(searchTerm)) ||
+                (x.UserPhoneNo != null && x.UserPhoneNo.Contains(searchTerm)) ||
+                (x.UserEmail != null && x.UserEmail.Contains(searchTerm)) ||
+                (x.UserTag != null && x.UserTag.Contains(searchTerm))).ToList();
         }
 
+        public static void ClearUserControls(int userId, string firstName, string lastName, string phoneNo, string email, string userTag)
+        {
+            userId = 0;
+            firstName = string.Empty;
+            lastName = string.Empty;
+            phoneNo = string.Empty;
+            email = string.Empty;
+            userTag = string.Empty;
+        }
     }
 }

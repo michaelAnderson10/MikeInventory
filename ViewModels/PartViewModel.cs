@@ -115,15 +115,37 @@ namespace MikeInventory.ViewModels
             }
         }
 
-        public PartCommand CreateCommand { get; }
-        public ICommand UpdateCommand { get; }
-        public ICommand DeleteCommand { get; }
-        public ICommand ClearCommand { get; }
-        public ICommand SearchCommand { get; }
+        private string _partSearch;
+        public string PartSearch
+        {
+            get { return _partSearch; }
+            set
+            {
+                _partSearch = value;
+                OnPropertyChanged(nameof(PartSearch));
+            }
+
+        }
+
+        private string _partSelectedId;
+        public string PartSelectedId
+        {
+            get { return _partSelectedId; }
+            set
+            {
+                _partSelectedId = value;
+                OnPropertyChanged(nameof(PartSelectedId));
+            }
+
+        }
+
+        public PartCommand PartCommand { get; }
+
 
 
         ////Binding property to UserId ComboBox in PartView
         public ObservableCollection<User> Users { get; set; }
+
         ////Binding property to SupplierId ComboBox in PartView
         public ObservableCollection<Supplier> Suppliers { get; set; }
 
@@ -136,13 +158,8 @@ namespace MikeInventory.ViewModels
             Users = new ObservableCollection<User>(Data.UserDataAccess.GetUser());
             Suppliers = new ObservableCollection<Supplier>(SupplierDataAccess.GetSupplier());
 
-            CreateCommand = new PartCommand(this);
+            PartCommand = new PartCommand(this);
 
-        }
-
-        public void LoadPart()
-        {
-            this.Parts = new ObservableCollection<Part>(PartDataAccess.GetPart());
         }
 
     }

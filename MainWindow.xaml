@@ -8,10 +8,17 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:views="clr-namespace:MikeInventory.Views"
     Title="MainWindow"
-    Width="800"
-    Height="450"
+    Width="1000"
+    Height="600"
     mc:Ignorable="d">
 
+    <!--<Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/ButtonStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>-->
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -22,14 +29,14 @@
         <StackPanel
             Grid.Row="0"
             Grid.Column="0"
-            Margin="0,60,0,0"
+            Margin="0,40,0,0"
             HorizontalAlignment="Center"
             Orientation="Vertical">
             <Button
                 x:Name="BtnHome"
                 Command="{Binding SwitchViewCommand}"
                 CommandParameter="SwitchToHome"
-                Content="Home" />
+                Content="Home"/>
             <Button
                 x:Name="BtnTool"
                 Command="{Binding SwitchViewCommand}"

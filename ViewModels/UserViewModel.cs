@@ -91,7 +91,30 @@ namespace MikeInventory.ViewModels
             }
             
         }
-              
+
+        private string _userSearch;
+        public string UserSearch
+        {
+            get { return _userSearch; }
+            set
+            {
+                _userSearch = value;
+                OnPropertyChanged(nameof(UserSearch));
+            }
+
+        }
+
+        private string _userSelectedId;
+        public string UserSelectedId
+        {
+            get { return _userSelectedId; }
+            set
+            {
+                _userSelectedId = value;
+                OnPropertyChanged(nameof(UserSelectedId));
+            }
+
+        }
 
         private List<User> _users;
         public List<User> Users
@@ -107,12 +130,24 @@ namespace MikeInventory.ViewModels
             }
         }
 
-        public UserCommand CreateUserCommand { get; set; }
+        public UserCommand UserCommand { get; set; }
+       
         public UserViewModel()
         {
-            CreateUserCommand = new UserCommand(this);
+            UserCommand = new UserCommand(this);
+
             _users = UserDataAccess.GetUser();
         }
+
+        //public void ClearText()
+        //{
+        //    UserId = 0;
+        //    FirstName = string.Empty;
+        //    LastName = string.Empty;
+        //    UserPhoneNo = string.Empty;
+        //    UserEmail = string.Empty;
+        //    UserTag = string.Empty;
+        //}
 
     }
 }

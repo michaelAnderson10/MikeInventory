@@ -1,18 +1,7 @@
-﻿using MikeInventory.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using MikeInventory.Models;
+using MikeInventory.ViewModels;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MikeInventory.Views
 {
@@ -25,6 +14,29 @@ namespace MikeInventory.Views
         {
             InitializeComponent();
             DataContext = new SupplierViewModel();
+        }
+
+        private void DatagridSupplier_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Supplier selectedSupplier = (Supplier)DatagridSupplier.SelectedItem;
+
+            TxtIdSupplier.Text=selectedSupplier.SupplierId.ToString();
+            TxtDescriptionSupplier.Text=selectedSupplier.SupplierName;
+            TxtAddressSupplier.Text = selectedSupplier.SupplierAddress;
+            TxtPhoneSupplier.Text = selectedSupplier.SupplierPhone;
+            TxtEmailSupplier.Text = selectedSupplier.SupplierEmail;
+            TxtTagSupplier.Text = selectedSupplier.SupplierTag;
+            
+        }
+
+        private void BtnClearSupplier_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            TxtIdSupplier.Text = "0";
+            TxtDescriptionSupplier.Text = string.Empty;
+            TxtAddressSupplier.Text = string.Empty;
+            TxtPhoneSupplier.Text = string.Empty;
+            TxtEmailSupplier.Text= string.Empty;
+            TxtTagSupplier.Text= string.Empty;
         }
     }
 }

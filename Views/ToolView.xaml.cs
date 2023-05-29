@@ -1,4 +1,5 @@
-﻿using MikeInventory.ViewModels;
+﻿using MikeInventory.Models;
+using MikeInventory.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,30 @@ namespace MikeInventory.Views
         {
             InitializeComponent();
             DataContext = new ToolViewModel();
+        }
+
+        private void DatagridTool_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Tool selectedTool = (Tool)DatagridTool.SelectedItem;
+
+            TxtIdTool.Text = selectedTool.ToolId.ToString();
+            TxtDescriptionTool.Text = selectedTool.ToolDescription;
+            TxtIdTool.Text = selectedTool.ToolQuantity.ToString();
+            TxtTagTool.Text = selectedTool.ToolTag;
+
+            //cmbSupplierTool.SelectedItem = selectedTool.SupplierID.ToString();
+            //CmbUserPart.SelectedItem = selectedTool.UserID.ToString();
+        }
+
+        private void BtnClearTool_Click(object sender, RoutedEventArgs e)
+        {
+            TxtIdTool.Text = "0";
+            TxtDescriptionTool.Text = string.Empty;
+            TxtIdTool.Text = "0";
+            TxtTagTool.Text = string.Empty;
+
+            CmbSupplierTool.SelectedItem = null;
+            CmbUserTool.SelectedItem = null;
         }
     }
 }

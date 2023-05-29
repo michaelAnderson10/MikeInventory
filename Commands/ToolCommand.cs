@@ -19,8 +19,26 @@ namespace MikeInventory.Commands
 
         public override void Execute(object? parameter)
         {
-            ToolDataAccess.AddTool(_viewModel.ToolId, _viewModel.ToolDescription, _viewModel.ToolQuantity, _viewModel.SupplierIdToDb, _viewModel.ToolTag, _viewModel.UserIdToDb);
-            _viewModel.Tools = ToolDataAccess.GetTool();
+            switch (parameter?.ToString())
+            {
+                case "CreateTool":
+                    ToolDataAccess.AddTool(_viewModel.ToolId, _viewModel.ToolDescription, _viewModel.ToolQuantity, _viewModel.SupplierIdToDb, _viewModel.ToolTag, _viewModel.UserIdToDb);
+                    _viewModel.Tools = ToolDataAccess.GetTool();
+                    break;
+                case "UpdateTool":
+                    ToolDataAccess.UpdateTool(_viewModel.ToolId, _viewModel.ToolDescription, _viewModel.ToolQuantity, _viewModel.SupplierIdToDb, _viewModel.ToolTag, _viewModel.UserIdToDb);
+                    _viewModel.Tools = ToolDataAccess.GetTool();
+                    break;
+                case "DeleteTool":
+                    int selectedToolId = int.Parse(_viewModel.ToolSelectedId);
+                    ToolDataAccess.RemoveTool(selectedToolId);
+                    _viewModel.Tools = ToolDataAccess.GetTool();
+                    break;
+                case "SearchTool":
+                    _viewModel.Tools = ToolDataAccess.SearchTool(_viewModel.ToolSearch);
+                    break;
+            }
+            
         }
     }
 }

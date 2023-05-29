@@ -21,9 +21,27 @@ namespace MikeInventory.Commands
         }
 
         public override void Execute(object? parameter)
-        {          
-            PartDataAccess.AddPart(_viewModel.PartIdToDb, _viewModel.PartDescription, _viewModel.PartQuantity, _viewModel.SupplierIdToDb, _viewModel.PartTag, _viewModel.UserIdToDb);
-            _viewModel.LoadPart();
+        {
+            switch (parameter?.ToString())
+            {
+                case "CreatePart":
+                    PartDataAccess.AddPart(_viewModel.PartIdToDb, _viewModel.PartDescription, _viewModel.PartQuantity, _viewModel.SupplierIdToDb, _viewModel.PartTag, _viewModel.UserIdToDb);
+                    _viewModel.Parts = PartDataAccess.GetPart();
+                    break;
+                case "UpdatePart":
+                    PartDataAccess.UpdatePart(_viewModel.PartIdToDb, _viewModel.PartDescription, _viewModel.PartQuantity, _viewModel.SupplierIdToDb, _viewModel.PartTag, _viewModel.UserIdToDb);
+                    _viewModel.Parts = PartDataAccess.GetPart();
+                    break;
+                case "DeletePart":
+                    int selectedPartId = int.Parse(_viewModel.PartSelectedId);
+                    PartDataAccess.RemovePart(selectedPartId);
+                    _viewModel.Parts = PartDataAccess.GetPart();
+                    break;
+                case "SearchPart":
+                    _viewModel.Parts = PartDataAccess.SearchPart(_viewModel.PartSearch);
+                    break;
+            }
+           
 
         }
 

@@ -22,10 +22,10 @@
 
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="2*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="22" />
+                <RowDefinition Height="35" />
                 <RowDefinition Height="10*" />
             </Grid.RowDefinitions>
 
@@ -43,20 +43,28 @@
                 Orientation="Horizontal">
                 <Button
                     x:Name="BtnCreatePart"
-                    Command="{Binding CreateCommand}"
+                    Command="{Binding PartCommand}"
+                    CommandParameter="CreatePart"
                     Content="Create" />
                 <Button
                     x:Name="BtnUpdatePart"
-                    Command="{Binding UpdateCommand}"
+                    Command="{Binding PartCommand}"
+                    CommandParameter="UpdatePart"
                     Content="Update" />
                 <Button
                     x:Name="BtnDeletePart"
-                    Command="{Binding DeleteCommand}"
+                    Command="{Binding PartCommand}"
+                    CommandParameter="DeletePart"
                     Content="Delete" />
                 <Button
                     x:Name="BtnClearPart"
-                    Command="{Binding ClearCommand}"
+                    Click="BtnClearPart_Click"
                     Content="Clear" />
+                <!--<Button
+                    x:Name="BtnClearPart"
+                    Command="{Binding PartCommand}"
+                     CommandParameter="ClearPart"
+                    Content="Clear" />-->
             </StackPanel>
 
             <StackPanel Grid.Row="3" Orientation="Horizontal">
@@ -64,7 +72,7 @@
                 <TextBox x:Name="TxtDescriptionPart" Text="{Binding PartDescription, UpdateSourceTrigger=PropertyChanged}" />
                 <TextBox x:Name="TxtQtyPart" Text="{Binding PartQuantity, UpdateSourceTrigger=PropertyChanged}" />
                 <ComboBox
-                    x:Name="cmbSupplierPart"
+                    x:Name="CmbSupplierPart"
                     DisplayMemberPath="SupplierName"
                     ItemsSource="{Binding Suppliers}"
                     SelectedValue="{Binding SupplierIdToDb}"
@@ -94,19 +102,26 @@
                 Orientation="Horizontal">
                 <Button
                     x:Name="BtnSearchPart"
-                    Command="{Binding SearchCommand}"
+                    Command="{Binding PartCommand}"
+                    CommandParameter="SearchPart"
                     Content="Search" />
                 <TextBox
                     x:Name="TxtSearchPart"
-                    Width="150"
-                    Height="20" />
+                    Width="115"
+                    Height="20" 
+                    Text="{Binding PartSearch, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
 
             <Grid Grid.Row="4">
                 <DataGrid
                     x:Name="DatagridPart"
                     AutoGenerateColumns="False"
-                    ItemsSource="{Binding Parts, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                    IsReadOnly="True"
+                    ItemsSource="{Binding Parts}"
+                    MouseDoubleClick="DatagridPart_MouseDoubleClick"
+                    SelectedValue="{Binding PartSelectedId}"
+                    SelectedValuePath="PartId"
+                    SelectionMode="Single">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding PartId, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="Part No" />
                         <DataGridTextColumn Binding="{Binding PartDescription, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="Description" />

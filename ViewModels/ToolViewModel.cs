@@ -89,7 +89,31 @@ namespace MikeInventory.ViewModels
             }
         }
 
-        public ToolCommand CreateToolCommand { get; set; }
+        private string _toolSearch;
+        public string ToolSearch
+        {
+            get { return _toolSearch; }
+            set
+            {
+                _toolSearch = value;
+                OnPropertyChanged(nameof(ToolSearch));
+            }
+
+        }
+
+        private string _toolSelectedId;
+        public string ToolSelectedId
+        {
+            get { return _toolSelectedId; }
+            set
+            {
+                _toolSelectedId = value;
+                OnPropertyChanged(nameof(ToolSelectedId));
+            }
+
+        }
+
+        public ToolCommand ToolCommand { get; set; }
 
         ////Binding property to UserId ComboBox in ToolView
         public ObservableCollection<User> Users { get; set; }
@@ -103,7 +127,7 @@ namespace MikeInventory.ViewModels
             Users = new ObservableCollection<User>(UserDataAccess.GetUser());
             Suppliers = new ObservableCollection<Supplier>(SupplierDataAccess.GetSupplier());
 
-            CreateToolCommand = new ToolCommand(this);
+            ToolCommand = new ToolCommand(this);
         }
     }
 }

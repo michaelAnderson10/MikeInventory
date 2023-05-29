@@ -20,11 +20,9 @@
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="2*" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="32" />
                 <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="10*" />
             </Grid.RowDefinitions>
 
             <TextBlock
@@ -34,25 +32,12 @@
                 FontWeight="Bold"
                 Text="Home" />
 
-            <StackPanel Grid.Row="3" Orientation="Horizontal">
+            <StackPanel Grid.Row="1" Orientation="Horizontal">
                 <ComboBox
-                    x:Name="CmbCategory"
-                    Width="100"
-                    Height="20"
-                    Margin="5,1,1,5" />
-                <TextBox x:Name="TxtId" />
-                <TextBox x:Name="TxtDescription" />
-                <TextBox x:Name="TxtQty" />
-                <TextBox x:Name="TxtSupplier" />
-                <TextBox x:Name="TxtTag" />
-            </StackPanel>
-            <StackPanel Grid.Row="2" Orientation="Horizontal">
-                <TextBlock Text="Category" />
-                <TextBlock Text="Part No" />
-                <TextBlock Text="Description" />
-                <TextBlock Text="Stock Quantity" />
-                <TextBlock Text="Supplier" />
-                <TextBlock Text="Tags" />
+                    Width="115"
+                    x:Name="CmbCategory" />
+                <TextBlock Text="Select Category" />
+
             </StackPanel>
 
             <StackPanel
@@ -63,7 +48,7 @@
                 <Button x:Name="BtnSearch" Content="Search" />
                 <TextBox
                     x:Name="TxtSearch"
-                    Width="150"
+                    Width="157 "
                     Height="20" />
             </StackPanel>
 
@@ -71,6 +56,7 @@
                 <DataGrid
                     x:Name="DatagridHome"
                     AutoGenerateColumns="False"
+                    IsReadOnly="True"
                     ItemsSource="{Binding AllComponents, UpdateSourceTrigger=PropertyChanged}">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding PartAndToolId, UpdateSourceTrigger=PropertyChanged}" Header="Part No" />
@@ -81,11 +67,6 @@
                         <DataGridTextColumn Binding="{Binding PartAndToolUserId, UpdateSourceTrigger=PropertyChanged}" Header="Added by" />
                     </DataGrid.Columns>
                 </DataGrid>
-
-                <!--<DataGrid
-                    x:Name="DataGridHome"
-                    AutoGenerateColumns="True"
-                    ItemsSource="{Binding AllComponents, UpdateSourceTrigger=PropertyChanged}"/>-->
 
             </Grid>
         </Grid>

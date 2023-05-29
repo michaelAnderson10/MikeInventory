@@ -1,6 +1,7 @@
 ﻿using MikeInventory.Models;
 using MikeInventory.ViewModels;
 using MikeInventory.Views;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -38,48 +39,51 @@ namespace MikeInventory.Data
         }
 
 
+        //Update a record in Parts table
+        public static void UpdatePart(int partId, string partDescription, int partQuantity, int supplierId, string partTag, int userId)
+        {
+            using var db = new MikeInventoryContext();
+            Part partToUpdate = db.Parts.FirstOrDefault(x => x.PartId == partId);
+            if (partToUpdate != null)
+            {
+                partToUpdate.PartId = partId;
+                partToUpdate.PartDescription = partDescription;
+                partToUpdate.PartQuantity = partQuantity;
+                partToUpdate.SupplierID = supplierId;
+                partToUpdate.PartTag = partTag;
+                partToUpdate.UserID = userId;
 
-        //public static List<Part> GetPart()
-        //{
-        //    using (var db = new MikeInventoryContext())
-        //    {
-        //        return db.Parts.ToList();
-        //    }
-        //}
+                db.SaveChanges();
+            }
+            else
+            {
+                string errorMessage = $"Part with ID {partId} not found.";
+                Console.WriteLine(errorMessage);
+            }
 
-        //public ObservableCollection<Part>? parts;
-        //public PartDataAccess()
-        //{
-        //    parts = new ObservableCollection<Part>(PartDataAccess.GetPart());
-        //}
-
-
-        ////Update a record in People table
-        //public static void UpdateUser()
-        //{
-        //    User varUpdate = new User();
-        //    using var db = new MikeInventoryContext();
-        //    varUpdate = db.Users.Where(x => x.UserId == 3).First();
-        //    varUpdate.FirstName = "Michael";
-        //    db.SaveChanges();
-        //}
+        }
 
 
-        ////Delete record from People table  
-        //public static void RemoveUser()
-        //{
-        //    User varRemove = new User();
-        //    using var db = new MikeInventoryContext();
-        //    varRemove = db.Users.Where(x => x.UserId == 3).First();
-        //    db.Users.Remove(varRemove);
-        //    db.SaveChanges();
-        //}
+        ////Delete record from Parts table  
+        public static void RemovePart(int partSelectedId)
+        {
+            Part varRemove = new Part();
+            using var db = new MikeInventoryContext();
+            varRemove = db.Parts.Where(x => x.PartId == partSelectedId).First();
+            db.Parts.Remove(varRemove);
+            db.SaveChanges();
+        }
 
-        //public static List<User> SearchUser()
-        //{
-        //    using var db = new MikeInventoryContext();
-        //    return db.Users.Where(x => x.UserId == 3).ToList();
+        public static ObservableCollection<Part> SearchPart(string searchTerm)
+        {
+            using var db = new MikeInventoryContext();
+            var searchResult = db.Parts.Where(x =>
+                x.PartId.ToString().Contains(searchTerm) ||
+                x.PartDescription.Contains(searchTerm) ||
+                (x.PartTag != null && x.PartTag.Contains(searchTerm))).ToList();
 
-        //}
+            return new ObservableCollection<Part>(searchResult);
+        }
+
     }
 }

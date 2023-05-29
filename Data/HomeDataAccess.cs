@@ -11,13 +11,6 @@ namespace MikeInventory.Data
     {
         public static ObservableCollection<object> GetAllComponent()
         {
-            //var parts = PartDataAccess.GetPart();
-            //var tools = ToolDataAccess.GetTool();
-
-            //var AllComponents = new ObservableCollection<object>(parts.Cast<object>().Union(tools.Cast<object>()));
-
-            //return AllComponents;
-
             var parts = PartDataAccess.GetPart();
             var tools = ToolDataAccess.GetTool();       
 

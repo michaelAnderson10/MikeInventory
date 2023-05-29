@@ -19,10 +19,10 @@
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="2*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="22" />
+                <RowDefinition Height="35" />
                 <RowDefinition Height="10*" />
             </Grid.RowDefinitions>
 
@@ -44,19 +44,36 @@
                 Orientation="Horizontal">
                 <Button
                     x:Name="BtnCreateUser"
-                    Command="{Binding CreateUserCommand}"
+                    Command="{Binding UserCommand}"
+                    CommandParameter="CreateUser"
                     Content="Create" />
-                <Button x:Name="BtnUpdateUser" Content="Update" />
-                <Button x:Name="BtnDeleteUser" Content="Delete" />
-                <Button x:Name="BtnClearUser" Content="Clear" />
+                <Button
+                    x:Name="BtnUpdateUser"
+                    Command="{Binding UserCommand}"
+                    CommandParameter="UpdateUser"
+                    Content="Update" />
+                <Button
+                    x:Name="BtnDeleteUser"
+                    Command="{Binding UserCommand}"
+                    CommandParameter="DeleteUser"
+                    Content="Delete" />
+                <Button
+                    x:Name="BtnClearUser"
+                    Click="BtnClearUser_Click"
+                    Content="Clear" />
+                <!--<Button
+                    x:Name="BtnClearUser"
+                    Command="{Binding UserCommand}"
+                    CommandParameter="ClearUser"
+                    Content="Clear" />-->
             </StackPanel>
             <StackPanel Grid.Row="3" Orientation="Horizontal">
-                <TextBox x:Name="TxtIdUser" Text="{Binding UserId, UpdateSourceTrigger=PropertyChanged}" />
-                <TextBox x:Name="TxtFirstName" Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}" />
-                <TextBox x:Name="TxtLastName" Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged}" />
-                <TextBox x:Name="TxtPhoneUser" Text="{Binding UserPhoneNo, UpdateSourceTrigger=PropertyChanged}" />
-                <TextBox x:Name="TxtEmailUser" Text="{Binding UserEmail, UpdateSourceTrigger=PropertyChanged}" />
-                <TextBox x:Name="TxtTagUser" Text="{Binding UserTag, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBox x:Name="TxtIdUser" Text="{Binding UserId, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                <TextBox x:Name="TxtFirstName" Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                <TextBox x:Name="TxtLastName" Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                <TextBox x:Name="TxtPhoneUser" Text="{Binding UserPhoneNo, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                <TextBox x:Name="TxtEmailUser" Text="{Binding UserEmail, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                <TextBox x:Name="TxtTagUser" Text="{Binding UserTag, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
             </StackPanel>
             <StackPanel Grid.Row="2" Orientation="Horizontal">
                 <TextBlock Text="User Id" />
@@ -72,19 +89,28 @@
                 Grid.Column="1"
                 HorizontalAlignment="Right"
                 Orientation="Horizontal">
-                <Button x:Name="BtnSearchUser" Content="Search" />
+                <Button
+                    x:Name="BtnSearchUser"
+                    Command="{Binding UserCommand}"
+                    CommandParameter="SearchUser"
+                    Content="Search" />
                 <TextBox
                     x:Name="TxtSearchUser"
-                    Width="150"
-                    Height="20" />
+                    Text="{Binding UserSearch, UpdateSourceTrigger=PropertyChanged}"
+                    Width="115"
+                    Height="20"/>
             </StackPanel>
-
-            <!--<DataGrid Grid.Row="4" Grid.Column="1" x:Name="DatagridUser" Margin="5" ItemsSource="{Binding Users}" />-->
+         
             <Grid Grid.Row="4">
                 <DataGrid
                     x:Name="DatagridUser"
                     AutoGenerateColumns="False"
-                    ItemsSource="{Binding Users}">
+                    ItemsSource="{Binding Users}"
+                    SelectedValue="{Binding UserSelectedId}"
+                    SelectedValuePath="UserId"
+                    SelectionMode="Single"
+                    MouseDoubleClick="DatagridUser_MouseDoubleClick"
+                    IsReadOnly="True">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding UserId}" Header="User Id" />
                         <DataGridTextColumn Binding="{Binding FirstName}" Header="First Name" />

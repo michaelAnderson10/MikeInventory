@@ -94,6 +94,30 @@ namespace MikeInventory.ViewModels
             }
         }
 
+        private string _supplierSearch;
+        public string SupplierSearch
+        {
+            get { return _supplierSearch; }
+            set
+            {
+                _supplierSearch = value;
+                OnPropertyChanged(nameof(SupplierSearch));
+            }
+
+        }
+
+        private string _supplierSelectedId;
+        public string SupplierSelectedId
+        {
+            get { return _supplierSelectedId; }
+            set
+            {
+                _supplierSelectedId = value;
+                OnPropertyChanged(nameof(SupplierSelectedId));
+            }
+
+        }
+
         private ObservableCollection<Supplier> _suppliers;
         public ObservableCollection<Supplier> Suppliers
         {
@@ -108,11 +132,11 @@ namespace MikeInventory.ViewModels
             }
         }
 
-        public SupplierCommand CreateSupplierCommand { get; set; }
+        public SupplierCommand SupplierCommand { get; set; }
 
         public SupplierViewModel()
         {
-            CreateSupplierCommand = new SupplierCommand(this);
+            SupplierCommand = new SupplierCommand(this);
             _suppliers = SupplierDataAccess.GetSupplier();
         }
 

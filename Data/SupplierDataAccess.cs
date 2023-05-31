@@ -34,7 +34,7 @@ namespace MikeInventory.Data
         public static void UpdateSupplier(int supplierId, string supplierName, string supplierAddress, string supplierPhone, string supplierEmail, string supplierTag)
         {
             using var db = new MikeInventoryContext();
-            Supplier supplierToUpdate = db.Suppliers.FirstOrDefault(x => x.SupplierId == supplierId);
+            Supplier? supplierToUpdate = db.Suppliers.FirstOrDefault(x => x.SupplierId == supplierId);
             if (supplierToUpdate != null)
             {
                 supplierToUpdate.SupplierId = supplierId;

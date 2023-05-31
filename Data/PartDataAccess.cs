@@ -43,7 +43,7 @@ namespace MikeInventory.Data
         public static void UpdatePart(int partId, string partDescription, int partQuantity, int supplierId, string partTag, int userId)
         {
             using var db = new MikeInventoryContext();
-            Part partToUpdate = db.Parts.FirstOrDefault(x => x.PartId == partId);
+            Part? partToUpdate = db.Parts.FirstOrDefault(x => x.PartId == partId);
             if (partToUpdate != null)
             {
                 partToUpdate.PartId = partId;

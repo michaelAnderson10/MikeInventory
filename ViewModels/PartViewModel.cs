@@ -155,7 +155,7 @@ namespace MikeInventory.ViewModels
         {
             _parts = PartDataAccess.GetPart();
 
-            Users = new ObservableCollection<User>(Data.UserDataAccess.GetUser());
+            Users = new ObservableCollection<User>(UserDataAccess.GetUser());
             Suppliers = new ObservableCollection<Supplier>(SupplierDataAccess.GetSupplier());
 
             PartCommand = new PartCommand(this);

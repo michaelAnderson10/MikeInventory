@@ -108,8 +108,8 @@
                 <TextBox
                     x:Name="TxtSearchPart"
                     Width="115"
-                    Height="20" 
-                    Text="{Binding PartSearch, UpdateSourceTrigger=PropertyChanged}"/>
+                    Height="20"
+                    Text="{Binding PartSearch, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
 
             <Grid Grid.Row="4">

@@ -19,7 +19,7 @@ namespace MikeInventory.Commands
 
         public override void Execute(object? parameter)
         {
-            switch (parameter.ToString())
+            switch (parameter?.ToString())
             {
                 case "CreateUser":
                     UserDataAccess.AddUser(_userViewModel.UserId, _userViewModel.FirstName, _userViewModel.LastName, _userViewModel.UserPhoneNo, _userViewModel.UserEmail, _userViewModel.UserTag);

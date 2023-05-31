@@ -39,7 +39,7 @@ namespace MikeInventory.Data
         public static void UpdateUser(int userId, string firstName, string lastName, string phoneNo, string email, string userTag)
         {
             using var db = new MikeInventoryContext();
-            User userToUpdate = db.Users.FirstOrDefault(x => x.UserId == userId);
+            User? userToUpdate = db.Users.FirstOrDefault(x => x.UserId == userId);
             if (userToUpdate != null)
             {
                 userToUpdate.FirstName = firstName;

@@ -11,8 +11,8 @@ namespace MikeInventory.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
-        private BaseViewModel _currentViewModel;
-        public BaseViewModel CurrentViewModel 
+        private BaseViewModel? _currentViewModel;
+        public BaseViewModel? CurrentViewModel 
         {
             get { return _currentViewModel; }
             set 

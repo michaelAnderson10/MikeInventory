@@ -43,7 +43,7 @@ namespace MikeInventory.Data
         public static void UpdateTool(int toolId, string toolDescription, int toolQuantity, int supplierId, string toolTag, int userId)
         {
             using var db = new MikeInventoryContext();
-            Tool toolToUpdate = db.Tools.FirstOrDefault(x => x.ToolId == toolId);
+            Tool? toolToUpdate = db.Tools.FirstOrDefault(x => x.ToolId == toolId);
             if (toolToUpdate != null)
             {
                 toolToUpdate.ToolId = toolId;

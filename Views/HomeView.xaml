@@ -35,9 +35,11 @@
             <StackPanel Grid.Row="1" Orientation="Horizontal">
                 <ComboBox
                     Width="115"
-                    x:Name="CmbCategory" />
+                    x:Name="CmbCategory"
+                    ItemsSource="{Binding Categories}"
+                    SelectedItem="{Binding SelectedCategory}"
+                    DisplayMemberPath="Name"/>
                 <TextBlock Text="Select Category" />
-
             </StackPanel>
 
             <StackPanel
@@ -45,11 +47,15 @@
                 Grid.Column="1"
                 HorizontalAlignment="Right"
                 Orientation="Horizontal">
-                <Button x:Name="BtnSearch" Content="Search" />
+                <Button x:Name="BtnSearch"
+                        Command="{Binding HomeCommand}"
+                        CommandParameter="SearchHome"
+                        Content="Search"/>
                 <TextBox
                     x:Name="TxtSearch"
                     Width="157 "
-                    Height="20" />
+                    Height="20" 
+                    Text="{Binding ComponentSearch, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
 
             <Grid Grid.Row="4">

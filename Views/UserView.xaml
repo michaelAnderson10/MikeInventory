@@ -96,21 +96,21 @@
                     Content="Search" />
                 <TextBox
                     x:Name="TxtSearchUser"
-                    Text="{Binding UserSearch, UpdateSourceTrigger=PropertyChanged}"
                     Width="115"
-                    Height="20"/>
+                    Height="20"
+                    Text="{Binding UserSearch, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
-         
+
             <Grid Grid.Row="4">
                 <DataGrid
                     x:Name="DatagridUser"
                     AutoGenerateColumns="False"
+                    IsReadOnly="True"
                     ItemsSource="{Binding Users}"
+                    MouseDoubleClick="DatagridUser_MouseDoubleClick"
                     SelectedValue="{Binding UserSelectedId}"
                     SelectedValuePath="UserId"
-                    SelectionMode="Single"
-                    MouseDoubleClick="DatagridUser_MouseDoubleClick"
-                    IsReadOnly="True">
+                    SelectionMode="Single">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding UserId}" Header="User Id" />
                         <DataGridTextColumn Binding="{Binding FirstName}" Header="First Name" />

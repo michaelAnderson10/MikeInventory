@@ -1,6 +1,8 @@
 ﻿using MikeInventory.Models;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
 
 namespace MikeInventory.Data
 {
@@ -12,6 +14,13 @@ namespace MikeInventory.Data
         public static void AddUser(int userId, string firstName, string lastName, string phoneNo, string email, string userTag)
         {
             using var context = new MikeInventoryContext();
+
+            bool userExists = context.Users.Any(p => p.UserId == userId);
+            if (userExists)
+            {
+                MessageBox.Show("User Id already exist, please assign a different User Id.", "Duplicate Part", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
 
             var db = new User
             {
@@ -27,11 +36,11 @@ namespace MikeInventory.Data
         }
 
         //Read all records in People table
-        public static List<User> GetUser()
+        public static ObservableCollection<User> GetUser()
         {
             using (var db = new MikeInventoryContext())
             {
-                return db.Users.ToList();
+                return new ObservableCollection<User>(db.Users.ToList());
             }
         }
 
@@ -62,16 +71,18 @@ namespace MikeInventory.Data
             db.SaveChanges();
         }
 
-        public static List<User> SearchUser(string searchTerm)
+        public static ObservableCollection<User> SearchUser(string searchTerm)
         {
             using var db = new MikeInventoryContext();
-            return db.Users.Where(x =>
+            var searchResult = db.Users.Where(x =>
                 x.UserId.ToString().Contains(searchTerm) ||
                 (x.FirstName != null && x.FirstName.Contains(searchTerm)) ||
                 (x.LastName != null && x.LastName.Contains(searchTerm)) ||
                 (x.UserPhoneNo != null && x.UserPhoneNo.Contains(searchTerm)) ||
                 (x.UserEmail != null && x.UserEmail.Contains(searchTerm)) ||
                 (x.UserTag != null && x.UserTag.Contains(searchTerm))).ToList();
+
+            return new ObservableCollection<User>(searchResult);
         }
 
         public static void ClearUserControls(int userId, string firstName, string lastName, string phoneNo, string email, string userTag)

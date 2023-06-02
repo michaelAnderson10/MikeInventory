@@ -32,30 +32,22 @@
                 FontWeight="Bold"
                 Text="Home" />
 
-            <StackPanel Grid.Row="1" Orientation="Horizontal">
-                <ComboBox
-                    Width="115"
-                    x:Name="CmbCategory"
-                    ItemsSource="{Binding Categories}"
-                    SelectedItem="{Binding SelectedCategory}"
-                    DisplayMemberPath="Name"/>
-                <TextBlock Text="Select Category" />
-            </StackPanel>
-
             <StackPanel
                 Grid.Row="1"
                 Grid.Column="1"
-                HorizontalAlignment="Right"
+                Margin="0,0,100,0"
+                HorizontalAlignment="Center"
                 Orientation="Horizontal">
-                <Button x:Name="BtnSearch"
-                        Command="{Binding HomeCommand}"
-                        CommandParameter="SearchHome"
-                        Content="Search"/>
+                <Button
+                    x:Name="BtnSearch"
+                    Command="{Binding HomeCommand}"
+                    CommandParameter="SearchHome"
+                    Content="Search" />
                 <TextBox
                     x:Name="TxtSearch"
-                    Width="157 "
-                    Height="20" 
-                    Text="{Binding ComponentSearch, UpdateSourceTrigger=PropertyChanged}"/>
+                    Width="300"
+                    Height="20"
+                    Text="{Binding ComponentSearch, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
 
             <Grid Grid.Row="4">
@@ -68,13 +60,13 @@
                         <DataGridTextColumn Binding="{Binding PartAndToolId, UpdateSourceTrigger=PropertyChanged}" Header="Part No" />
                         <DataGridTextColumn Binding="{Binding PartAndToolDescription, UpdateSourceTrigger=PropertyChanged}" Header="Description" />
                         <DataGridTextColumn Binding="{Binding PartAndToolQuantity, UpdateSourceTrigger=PropertyChanged}" Header="Quantity" />
-                        <DataGridTextColumn Binding="{Binding PartAndToolSupplierId, UpdateSourceTrigger=PropertyChanged}" Header="Supplier" />
+                        <DataGridTextColumn Binding="{Binding Supplier.SupplierName, UpdateSourceTrigger=PropertyChanged}" Header="Supplier" />
                         <DataGridTextColumn Binding="{Binding PartAndToolTags, UpdateSourceTrigger=PropertyChanged}" Header="Tags" />
-                        <DataGridTextColumn Binding="{Binding PartAndToolUserId, UpdateSourceTrigger=PropertyChanged}" Header="Added by" />
+                        <DataGridTextColumn Binding="{Binding User.FirstName, UpdateSourceTrigger=PropertyChanged}" Header="Added by" />
                     </DataGrid.Columns>
                 </DataGrid>
-
             </Grid>
+
         </Grid>
     </Grid>
 

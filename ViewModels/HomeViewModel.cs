@@ -38,36 +38,17 @@ namespace MikeInventory.ViewModels
             }
         }
 
-        private ObservableCollection<Category> _categories;
-        public ObservableCollection<Category> Categories
-        {
-            get { return _categories; }
-            set
-            {
-                _categories = value;
-                OnPropertyChanged(nameof(Categories));
-            }
-        }
-
-        private Category _selectedCategory;
-        public Category SelectedCategory
-        {
-            get { return _selectedCategory; }
-            set
-            {
-                _selectedCategory = value;
-                OnPropertyChanged(nameof(SelectedCategory));
-            }
-        }
+        public Supplier Supplier { get; set; }
+        public User User { get; set; }
 
         public HomeCommand HomeCommand { get; }
 
         public HomeViewModel()
         {
             AllComponents = HomeDataAccess.GetAllComponent();
-            Categories = HomeDataAccess.GetCategories();
-
             HomeCommand = new HomeCommand(this);
+          
         }
+
     }
 }

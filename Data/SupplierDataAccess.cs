@@ -1,7 +1,8 @@
 ﻿using MikeInventory.Models;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
+using System;
 
 namespace MikeInventory.Data
 {
@@ -10,6 +11,15 @@ namespace MikeInventory.Data
         public static void AddSupplier(int supplierId, string supplierName, string supplierAddress, string supplierPhone, string supplierEmail, string supplierTag) 
         {
             using var Context = new MikeInventoryContext();
+
+            bool supplierExists = Context.Suppliers.Any(p => p.SupplierId == supplierId);
+            if (supplierExists)
+            {
+                MessageBox.Show("User Id already exist, please assign a different User Id.", "Duplicate Part", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+
             var db = new Supplier
             {
                 SupplierId = supplierId,

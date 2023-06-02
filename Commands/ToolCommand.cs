@@ -22,10 +22,12 @@ namespace MikeInventory.Commands
             switch (parameter?.ToString())
             {
                 case "CreateTool":
+                    _viewModel.CheckSelectedSupplierAndUser();
                     ToolDataAccess.AddTool(_viewModel.ToolId, _viewModel.ToolDescription, _viewModel.ToolQuantity, _viewModel.SupplierIdToDb, _viewModel.ToolTag, _viewModel.UserIdToDb);
                     _viewModel.Tools = ToolDataAccess.GetTool();
                     break;
                 case "UpdateTool":
+                    _viewModel.CheckSelectedSupplierAndUser();
                     ToolDataAccess.UpdateTool(_viewModel.ToolId, _viewModel.ToolDescription, _viewModel.ToolQuantity, _viewModel.SupplierIdToDb, _viewModel.ToolTag, _viewModel.UserIdToDb);
                     _viewModel.Tools = ToolDataAccess.GetTool();
                     break;

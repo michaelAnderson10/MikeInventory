@@ -73,8 +73,8 @@ namespace MikeInventory.ViewModels
         }
 
         //// Binding property from User ComboBox to DB
-        private int _userIdToDb;
-        public int UserIdToDb
+        private int? _userIdToDb;
+        public int? UserIdToDb
         {
             get 
             {
@@ -88,8 +88,8 @@ namespace MikeInventory.ViewModels
         }
 
         //// Binding property from Supplier ComboBox to DB
-        private int _supplierIdToDb;
-        public int SupplierIdToDb
+        private int? _supplierIdToDb;
+        public int? SupplierIdToDb
         {
             get { return _supplierIdToDb; }
             set
@@ -141,22 +141,41 @@ namespace MikeInventory.ViewModels
 
         public PartCommand PartCommand { get; }
 
+        ////Binding property to UserId ComboBox in ToolView
+        private ObservableCollection<User> _users;
+        public ObservableCollection<User> Users
+        {
+            get { return _users; }
+            set
+            {
+                _users = value;
+                OnPropertyChanged(nameof(Users));
+            }
+        }
 
-
-        ////Binding property to UserId ComboBox in PartView
-        public ObservableCollection<User> Users { get; set; }
-
-        ////Binding property to SupplierId ComboBox in PartView
-        public ObservableCollection<Supplier> Suppliers { get; set; }
-
+        ////Binding property to SupplierId ComboBox in ToolView
+        private ObservableCollection<Supplier> _suppliers;
+        public ObservableCollection<Supplier> Suppliers
+        {
+            get { return _suppliers; }
+            set
+            {
+                _suppliers = value;
+                OnPropertyChanged(nameof(Suppliers));
+            }
+        }
+ 
+        public Supplier Supplier { get; set; }
+        public User User { get; set; }
 
         //// Construction
         public PartViewModel()
         {
             _parts = PartDataAccess.GetPart();
 
-            Users = new ObservableCollection<User>(UserDataAccess.GetUser());
-            Suppliers = new ObservableCollection<Supplier>(SupplierDataAccess.GetSupplier());
+            _suppliers = SupplierDataAccess.GetSupplier();
+            _users = UserDataAccess.GetUser();
+
 
             PartCommand = new PartCommand(this);
 

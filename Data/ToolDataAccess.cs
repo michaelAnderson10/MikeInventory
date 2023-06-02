@@ -1,4 +1,5 @@
-﻿using Microsoft.Identity.Client;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
 using MikeInventory.Models;
 using System;
 using System.Collections.Generic;
@@ -6,15 +7,24 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace MikeInventory.Data
 {
     public class ToolDataAccess
     {
-        public static void AddTool(int toolId, string toolDescription, int toolQuantity, int supplierId, string toolTag, int userId)
+        public static void AddTool(int toolId, string toolDescription, int toolQuantity, int? supplierId, string toolTag, int? userId)
         {
             using var context = new MikeInventoryContext();
+
+            bool partExists = context.Tools.Any(p => p.ToolId == toolId);
+            if (partExists)
+            {
+                MessageBox.Show("Tool number already exist, please assign a different Tool number.", "Duplicate Tool", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
             var db = new Tool
             {
                 ToolId = toolId,
@@ -28,19 +38,17 @@ namespace MikeInventory.Data
             context.SaveChanges();
         }
 
-
         ////Read all records in Tools table       
-        public ObservableCollection<Tool>? Tools { get; set; }
         public static ObservableCollection<Tool> GetTool()
         {
             using (var db = new MikeInventoryContext())
             {
-                return new ObservableCollection<Tool>(db.Tools.ToList());
+                return new ObservableCollection<Tool>(db.Tools.Include(t => t.Supplier).Include(t => t.User).ToList());
             }
         }
 
         //Update a record in Tools table
-        public static void UpdateTool(int toolId, string toolDescription, int toolQuantity, int supplierId, string toolTag, int userId)
+        public static void UpdateTool(int toolId, string toolDescription, int toolQuantity, int? supplierId, string toolTag, int? userId)
         {
             using var db = new MikeInventoryContext();
             Tool? toolToUpdate = db.Tools.FirstOrDefault(x => x.ToolId == toolId);

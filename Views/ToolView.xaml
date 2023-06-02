@@ -122,11 +122,12 @@
                         <DataGridTextColumn Binding="{Binding ToolId, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="Tool No" />
                         <DataGridTextColumn Binding="{Binding ToolDescription, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="Description" />
                         <DataGridTextColumn Binding="{Binding ToolQuantity, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="Quantity" />
-                        <DataGridTextColumn Binding="{Binding SupplierID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="Supplier" />
+                        <DataGridTextColumn Binding="{Binding Supplier.SupplierName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="Supplier" />
                         <DataGridTextColumn Binding="{Binding ToolTag, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="Tags" />
-                        <DataGridTextColumn Binding="{Binding UserID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="Added by" />
+                        <DataGridTextColumn Binding="{Binding User.FirstName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="Added by" />
                     </DataGrid.Columns>
                 </DataGrid>
+
             </Grid>
 
         </Grid>

@@ -56,8 +56,8 @@ namespace MikeInventory.ViewModels
             }
         }
 
-        private int _userIdToDb;
-        public int UserIdToDb
+        private int? _userIdToDb;
+        public int? UserIdToDb
         {
             get { return _userIdToDb; }
             set
@@ -67,8 +67,8 @@ namespace MikeInventory.ViewModels
             }
         }
 
-        private int _supplierIdToDb;
-        public int SupplierIdToDb
+        private int? _supplierIdToDb;
+        public int? SupplierIdToDb
         {
             get { return _supplierIdToDb; }
             set
@@ -116,18 +116,54 @@ namespace MikeInventory.ViewModels
         public ToolCommand ToolCommand { get; set; }
 
         ////Binding property to UserId ComboBox in ToolView
-        public ObservableCollection<User> Users { get; set; }
+        private ObservableCollection<User> _users;
+        public ObservableCollection<User> Users
+        {
+            get { return _users; }
+            set
+            {
+                _users = value;
+                OnPropertyChanged(nameof(Users));
+            }
+        }
+
         ////Binding property to SupplierId ComboBox in ToolView
-        public ObservableCollection<Supplier> Suppliers { get; set; }
+        private ObservableCollection<Supplier> _suppliers;
+        public ObservableCollection<Supplier> Suppliers
+        {
+            get { return _suppliers; }
+            set
+            {
+                _suppliers = value;
+                OnPropertyChanged(nameof(Suppliers));
+            }
+        }
+
+        public Supplier Supplier { get; set; }
+        public User User { get; set; }
 
         public ToolViewModel()
         {
             _tools = ToolDataAccess.GetTool();
 
-            Users = new ObservableCollection<User>(UserDataAccess.GetUser());
-            Suppliers = new ObservableCollection<Supplier>(SupplierDataAccess.GetSupplier());
+            _suppliers = SupplierDataAccess.GetSupplier();
+            _users = UserDataAccess.GetUser();
 
             ToolCommand = new ToolCommand(this);
         }
+
+        public void CheckSelectedSupplierAndUser()
+        {
+            if (!_suppliers.Any(s => s.SupplierId == _supplierIdToDb))
+            {
+                _supplierIdToDb = null;
+            }
+
+            if (!_users.Any(u => u.UserId == _userIdToDb))
+            {
+                _userIdToDb = null;
+            }
+        }
+
     }
 }

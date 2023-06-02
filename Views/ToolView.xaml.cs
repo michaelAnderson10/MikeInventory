@@ -28,13 +28,14 @@ namespace MikeInventory.Views
             DataContext = new ToolViewModel();
         }
 
+
         private void DatagridTool_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Tool selectedTool = (Tool)DatagridTool.SelectedItem;
 
             TxtIdTool.Text = selectedTool.ToolId.ToString();
             TxtDescriptionTool.Text = selectedTool.ToolDescription;
-            TxtIdTool.Text = selectedTool.ToolQuantity.ToString();
+            TxtQtyTool.Text = selectedTool.ToolQuantity.ToString();
             TxtTagTool.Text = selectedTool.ToolTag;
 
             //cmbSupplierTool.SelectedItem = selectedTool.SupplierID.ToString();
@@ -45,7 +46,7 @@ namespace MikeInventory.Views
         {
             TxtIdTool.Text = "0";
             TxtDescriptionTool.Text = string.Empty;
-            TxtIdTool.Text = "0";
+            TxtQtyTool.Text = "0";
             TxtTagTool.Text = string.Empty;
 
             CmbSupplierTool.SelectedItem = null;

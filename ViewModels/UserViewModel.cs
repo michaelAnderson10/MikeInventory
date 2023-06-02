@@ -116,8 +116,8 @@ namespace MikeInventory.ViewModels
 
         }
 
-        private List<User> _users;
-        public List<User> Users
+        private ObservableCollection<User> _users;
+        public ObservableCollection<User> Users
         {
             get
             {

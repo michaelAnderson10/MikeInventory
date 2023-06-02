@@ -1,4 +1,5 @@
 ﻿using MikeInventory.Models;
+using MikeInventory.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,13 +14,37 @@ namespace MikeInventory.Data
         public static ObservableCollection<object> GetAllComponent()
         {
             var parts = PartDataAccess.GetPart();
-            var tools = ToolDataAccess.GetTool();       
+            var tools = ToolDataAccess.GetTool();
 
             var AllComponents = new ObservableCollection<object>(
-                parts.Select(p => new { PartAndToolId = p.PartId, PartAndToolDescription = p.PartDescription, PartAndToolQuantity = p.PartQuantity, PartAndToolSupplierId = p.SupplierID, PartAndToolTags = p.PartTag, PartAndToolUserId = p.UserID })
-                     .Cast<object>()
-                     .Union(tools.Select(t => new { PartAndToolId = t.ToolId, PartAndToolDescription = t.ToolDescription, PartAndToolQuantity = t.ToolQuantity, PartAndToolSupplierId = t.SupplierID, PartAndToolTags = t.ToolTag, PartAndToolUserId = t.UserID }))
-            );
+                parts.Select(p => new
+                {
+                    PartAndToolId = p.PartId,
+                    PartAndToolDescription = p.PartDescription,
+                    PartAndToolQuantity = p.PartQuantity,
+                    PartAndToolSupplierId = p.SupplierID,
+                    PartAndToolTags = p.PartTag,
+                    PartAndToolUserId = p.UserID,
+                    SupplierName = p.Supplier != null ? p.Supplier.SupplierName : null, // Eagerly load the SupplierName with null check
+                    FirstName = p.User != null ? p.User.FirstName : null,
+                    Supplier = p.Supplier,
+                    User = p.User
+                })
+                    .Cast<object>()
+                    .Union(tools.Select(t => new
+                    {
+                        PartAndToolId = t.ToolId,
+                        PartAndToolDescription = t.ToolDescription,
+                        PartAndToolQuantity = t.ToolQuantity,
+                        PartAndToolSupplierId = t.SupplierID,
+                        PartAndToolTags = t.ToolTag,
+                        PartAndToolUserId = t.UserID,
+                        SupplierName = t.Supplier != null ? t.Supplier.SupplierName : null, // Eagerly load the SupplierName with null check
+                        FirstName = t.User != null ? t.User.FirstName : null,
+                        Supplier = t.Supplier,
+                        User = t.User
+                    }))
+                );
 
             return AllComponents;
 
@@ -40,7 +65,11 @@ namespace MikeInventory.Data
                     PartAndToolQuantity = p.PartQuantity,
                     PartAndToolSupplierId = p.SupplierID,
                     PartAndToolTags = p.PartTag,
-                    PartAndToolUserId = p.UserID
+                    PartAndToolUserId = p.UserID,
+                    SupplierName = p.Supplier != null ? p.Supplier.SupplierName : null, // Eagerly load the SupplierName with null check
+                    FirstName = p.User != null ? p.User.FirstName : null,
+                    Supplier = p.Supplier,
+                    User = p.User
                 })
                 .Cast<object>();
 
@@ -55,23 +84,17 @@ namespace MikeInventory.Data
                     PartAndToolQuantity = t.ToolQuantity,
                     PartAndToolSupplierId = t.SupplierID,
                     PartAndToolTags = t.ToolTag,
-                    PartAndToolUserId = t.UserID
+                    PartAndToolUserId = t.UserID,
+                    SupplierName = t.Supplier != null ? t.Supplier.SupplierName : null, // Eagerly load the SupplierName with null check
+                    FirstName = t.User != null ? t.User.FirstName : null,
+                    Supplier = t.Supplier,
+                    User = t.User
                 })
                 .Cast<object>();
 
             var searchResult = new ObservableCollection<object>(partSearchResult.Union(toolSearchResult));
             return searchResult;
-        }
-
-
-        public static ObservableCollection<Category> GetCategories()
-        {
-            return new ObservableCollection<Category>
-            {
-                 new Category("Part"),
-                 new Category("Tool")
-            };
-        }       
+        }    
 
     }
 }

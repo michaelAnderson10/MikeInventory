@@ -1,19 +1,25 @@
-﻿using MikeInventory.Models;
-using MikeInventory.ViewModels;
-using MikeInventory.Views;
+﻿using Microsoft.EntityFrameworkCore;
+using MikeInventory.Models;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-
+using System.Windows;
 
 namespace MikeInventory.Data
 {
     public class PartDataAccess
     {     
-        public static void AddPart(int partId, string partDescription, int partQuantity, int supplierId, string partTag, int userId)
+        public static void AddPart(int partId, string partDescription, int partQuantity, int? supplierId, string partTag, int? userId)
         {
             using var context = new MikeInventoryContext();
+
+            bool partExists = context.Parts.Any(p => p.PartId == partId);
+            if (partExists)
+            {
+                MessageBox.Show("Part number already exist, please assign a different Part number.", "Duplicate Part", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
             var db = new Part
             {
                 PartId = partId,
@@ -29,18 +35,17 @@ namespace MikeInventory.Data
 
 
         ////Read all records in People table       
-        public ObservableCollection<Part>? Parts { get; set; }
         public static ObservableCollection<Part> GetPart()
         {
             using (var db = new MikeInventoryContext())
             {
-                return new ObservableCollection<Part>(db.Parts.ToList());
+                return new ObservableCollection<Part>(db.Parts.Include(t => t.Supplier).Include(t => t.User).ToList());
             }
         }
 
 
         //Update a record in Parts table
-        public static void UpdatePart(int partId, string partDescription, int partQuantity, int supplierId, string partTag, int userId)
+        public static void UpdatePart(int partId, string partDescription, int partQuantity, int? supplierId, string partTag, int? userId)
         {
             using var db = new MikeInventoryContext();
             Part? partToUpdate = db.Parts.FirstOrDefault(x => x.PartId == partId);

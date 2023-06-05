@@ -4,6 +4,8 @@ Stock Control App. Using WPF, MVVM, Entity FrameworkCore.
 The app was built with the .NET 6.0 Framework. 
 
 Features
+SCRUD Operation: Scrud operation can be performed on the components.
+
 MVVM Design Pattern: The application follows the MVVM design pattern, separating concerns between the Model, View, and ViewModel components. This allows for better code organization, maintainability, and testability.
 
 Entity Framework Core: Entity Framework Core is used for data access and database management. It provides an ORM (Object-Relational Mapping) approach to interact with the underlying database, making it easier to perform CRUD operations and manage entities.

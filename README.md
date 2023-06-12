@@ -13,3 +13,7 @@ Entity Framework Core: Entity Framework Core is used for data access and databas
 User Interface: The application utilizes the WPF framework to create a user-friendly interface, enabling users to interact with the application's features seamlessly.
 
 Ongoing Feature: The application requires some more validation and tests.
+
+Sample screenshot...
+
+![MikeInventoryPart](https://github.com/michaelAnderson10/MikeInventory/assets/121829346/b2264c7f-75aa-4d08-843e-1c07b185df0c)

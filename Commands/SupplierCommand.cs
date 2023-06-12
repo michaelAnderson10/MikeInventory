@@ -1,12 +1,5 @@
-﻿using MikeInventory.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MikeInventory.Data;
-using MikeInventory.Models;
-using System.Collections.ObjectModel;
+﻿using MikeInventory.Data;
+using MikeInventory.ViewModels;
 
 namespace MikeInventory.Commands
 {
@@ -39,8 +32,7 @@ namespace MikeInventory.Commands
                 case "SearchSupplier":
                     _viewModel.Suppliers = SupplierDataAccess.SearchSupplier(_viewModel.SupplierSearch);
                     break;
-            }
-          
+            }      
 
         }
     }

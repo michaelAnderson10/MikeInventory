@@ -26,8 +26,8 @@ namespace MikeInventory.ViewModels
             }
         }
      
-        private string _firstName;
-        public string FirstName
+        private string? _firstName;
+        public string? FirstName
         {
             get
             {
@@ -40,8 +40,8 @@ namespace MikeInventory.ViewModels
             }
         }
 
-        private string _lastName;
-        public string LastName
+        private string? _lastName;
+        public string? LastName
         {
             get 
             { 
@@ -54,8 +54,8 @@ namespace MikeInventory.ViewModels
             }
         }
 
-        private string _userPhoneNo;
-        public string UserPhoneNo
+        private string? _userPhoneNo;
+        public string? UserPhoneNo
         {
             get
             {
@@ -68,8 +68,8 @@ namespace MikeInventory.ViewModels
             }
         }
 
-        private string _userEmail;
-        public string UserEmail
+        private string? _userEmail;
+        public string? UserEmail
         {
             get { return _userEmail; }
             set
@@ -80,8 +80,8 @@ namespace MikeInventory.ViewModels
 
         }
 
-        private string _userTag;
-        public string UserTag
+        private string? _userTag;
+        public string? UserTag
         {
             get { return _userTag; }
             set

@@ -8,7 +8,7 @@ namespace MikeInventory.Data
 {
     public class SupplierDataAccess
     {
-        public static void AddSupplier(int supplierId, string supplierName, string supplierAddress, string supplierPhone, string supplierEmail, string supplierTag) 
+        public static void AddSupplier(int supplierId, string supplierName, string? supplierAddress, string? supplierPhone, string? supplierEmail, string? supplierTag) 
         {
             using var Context = new MikeInventoryContext();
 
@@ -41,7 +41,7 @@ namespace MikeInventory.Data
             }
         }
 
-        public static void UpdateSupplier(int supplierId, string supplierName, string supplierAddress, string supplierPhone, string supplierEmail, string supplierTag)
+        public static void UpdateSupplier(int supplierId, string supplierName, string? supplierAddress, string? supplierPhone, string? supplierEmail, string? supplierTag)
         {
             using var db = new MikeInventoryContext();
             Supplier? supplierToUpdate = db.Suppliers.FirstOrDefault(x => x.SupplierId == supplierId);

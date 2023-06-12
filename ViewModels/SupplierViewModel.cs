@@ -1,13 +1,7 @@
 ﻿using MikeInventory.Commands;
 using MikeInventory.Data;
 using MikeInventory.Models;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MikeInventory.ViewModels
 {
@@ -40,8 +34,8 @@ namespace MikeInventory.ViewModels
                 OnPropertyChanged(nameof(SupplierName));
             }
         }
-        private string _supplierAddress;
-        public string SupplierAddress
+        private string? _supplierAddress;
+        public string? SupplierAddress
         {
             get
             {
@@ -53,8 +47,8 @@ namespace MikeInventory.ViewModels
                 OnPropertyChanged(nameof(SupplierAddress));
             }
         }
-        private string _supplierPhone;
-        public string SupplierPhone
+        private string? _supplierPhone;
+        public string? SupplierPhone
         {
             get
             {
@@ -66,8 +60,8 @@ namespace MikeInventory.ViewModels
                 OnPropertyChanged(nameof(SupplierPhone));
             }
         }
-        private string _supplierEmail;
-        public string SupplierEmail
+        private string? _supplierEmail;
+        public string? SupplierEmail
         {
             get
             {
@@ -80,8 +74,8 @@ namespace MikeInventory.ViewModels
             }
         }
 
-        private string _supplierTags;
-        public string SupplierTags
+        private string? _supplierTags;
+        public string? SupplierTags
         {
             get
             {

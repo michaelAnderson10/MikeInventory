@@ -38,8 +38,8 @@ namespace MikeInventory.ViewModels
             }
         }
 
-        public Supplier Supplier { get; set; }
-        public User User { get; set; }
+        public Supplier? Supplier { get; set; }
+        public User? User { get; set; }
 
         public HomeCommand HomeCommand { get; }
 

@@ -11,7 +11,7 @@ namespace MikeInventory.Data
     {
 
         //Create new record in People table
-        public static void AddUser(int userId, string firstName, string lastName, string phoneNo, string email, string userTag)
+        public static void AddUser(int userId, string? firstName, string? lastName, string? phoneNo, string? email, string? userTag)
         {
             using var context = new MikeInventoryContext();
 
@@ -45,7 +45,7 @@ namespace MikeInventory.Data
         }
 
         //Update a record in People table
-        public static void UpdateUser(int userId, string firstName, string lastName, string phoneNo, string email, string userTag)
+        public static void UpdateUser(int userId, string? firstName, string? lastName, string? phoneNo, string? email, string? userTag)
         {
             using var db = new MikeInventoryContext();
             User? userToUpdate = db.Users.FirstOrDefault(x => x.UserId == userId);
@@ -85,14 +85,14 @@ namespace MikeInventory.Data
             return new ObservableCollection<User>(searchResult);
         }
 
-        public static void ClearUserControls(int userId, string firstName, string lastName, string phoneNo, string email, string userTag)
-        {
-            userId = 0;
-            firstName = string.Empty;
-            lastName = string.Empty;
-            phoneNo = string.Empty;
-            email = string.Empty;
-            userTag = string.Empty;
-        }
+        //public static void ClearUserControls(int userId, string? firstName, string? lastName, string? phoneNo, string? email, string? userTag)
+        //{
+        //    userId = 0;
+        //    firstName = string.Empty;
+        //    lastName = string.Empty;
+        //    phoneNo = string.Empty;
+        //    email = string.Empty;
+        //    userTag = string.Empty;
+        //}
     }
 }

@@ -2,14 +2,6 @@
 using MikeInventory.Data;
 using MikeInventory.Models;
 using System.Collections.ObjectModel;
-using System.Data.Common;
-using System.Diagnostics;
-using System.IO.Packaging;
-using System.Linq.Expressions;
-using System.Reflection.Metadata;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Input;
 
 namespace MikeInventory.ViewModels
 {

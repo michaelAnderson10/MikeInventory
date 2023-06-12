@@ -57,7 +57,9 @@ namespace MikeInventory.Data
             var partSearchResult = db.Parts
                 .Where(p => p.PartId.ToString().Contains(searchTerm)
                     || p.PartDescription.Contains(searchTerm)
-                    || (p.PartTag != null && p.PartTag.Contains(searchTerm)))
+                    || p.Supplier !=null && p.Supplier.SupplierName.Contains(searchTerm)
+                    || (p.User != null && p.User.FirstName != null && p.User.FirstName.Contains(searchTerm))
+                    || (p.PartTag !=null && p.PartTag.Contains(searchTerm)))
                 .Select(p => new
                 {
                     PartAndToolId = p.PartId,
@@ -76,6 +78,8 @@ namespace MikeInventory.Data
             var toolSearchResult = db.Tools
                 .Where(t => t.ToolId.ToString().Contains(searchTerm)
                     || t.ToolDescription.Contains(searchTerm)
+                    || t.Supplier != null && t.Supplier.SupplierName.Contains(searchTerm)
+                    || (t.User != null && t.User.FirstName != null && t.User.FirstName.Contains(searchTerm))
                     || (t.ToolTag != null && t.ToolTag.Contains(searchTerm)))
                 .Select(t => new
                 {
@@ -94,7 +98,6 @@ namespace MikeInventory.Data
 
             var searchResult = new ObservableCollection<object>(partSearchResult.Union(toolSearchResult));
             return searchResult;
-        }    
-
+        }
     }
 }

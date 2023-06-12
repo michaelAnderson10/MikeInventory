@@ -32,10 +32,13 @@ namespace MikeInventory.Commands
                     _viewModel.Tools = ToolDataAccess.GetTool();
                     break;
                 case "DeleteTool":
-                    int selectedToolId = int.Parse(_viewModel.ToolSelectedId);
-                    ToolDataAccess.RemoveTool(selectedToolId);
-                    _viewModel.Tools = ToolDataAccess.GetTool();
-                    break;
+                    if (_viewModel.ToolSelectedId != null)
+                    {
+                        int selectedToolId = int.Parse(_viewModel.ToolSelectedId);
+                        ToolDataAccess.RemoveTool(selectedToolId);
+                        _viewModel.Tools = ToolDataAccess.GetTool();
+                    }
+                        break;
                 case "SearchTool":
                     _viewModel.Tools = ToolDataAccess.SearchTool(_viewModel.ToolSearch);
                     break;

@@ -18,17 +18,27 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
+        <Image
+            Grid.Column="1"
+            Width="150"
+            Height="150"
+            Margin="0,0,0,20"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Source="pack://application:,,,/MikeInventory;component/MikeInventoryLogo.jpg" />
+
+
         <StackPanel
             Grid.Row="0"
             Grid.Column="0"
-            Margin="0,40,0,0"
+            Margin="0,40,0,300"
             HorizontalAlignment="Center"
             Orientation="Vertical">
             <Button
                 x:Name="BtnHome"
                 Command="{Binding SwitchViewCommand}"
                 CommandParameter="SwitchToHome"
-                Content="Home"/>
+                Content="Home" />
             <Button
                 x:Name="BtnTool"
                 Command="{Binding SwitchViewCommand}"

@@ -106,7 +106,7 @@
                     x:Name="BtnSearchPart"
                     Command="{Binding PartCommand}"
                     CommandParameter="SearchPart"
-                    Content="Search" />
+                    Content="Search"/>
                 <TextBox
                     x:Name="TxtSearchPart"
                     Width="115"

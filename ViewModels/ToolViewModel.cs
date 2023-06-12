@@ -45,8 +45,8 @@ namespace MikeInventory.ViewModels
             }
         }
 
-        private string _toolTag;
-        public string ToolTag
+        private string? _toolTag;
+        public string? ToolTag
         {
             get { return _toolTag; }
             set 

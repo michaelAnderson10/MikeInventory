@@ -14,7 +14,7 @@ namespace MikeInventory.Data
 {
     public class ToolDataAccess
     {
-        public static void AddTool(int toolId, string toolDescription, int toolQuantity, int? supplierId, string toolTag, int? userId)
+        public static void AddTool(int toolId, string toolDescription, int toolQuantity, int? supplierId, string? toolTag, int? userId)
         {
             using var context = new MikeInventoryContext();
 
@@ -48,7 +48,7 @@ namespace MikeInventory.Data
         }
 
         //Update a record in Tools table
-        public static void UpdateTool(int toolId, string toolDescription, int toolQuantity, int? supplierId, string toolTag, int? userId)
+        public static void UpdateTool(int toolId, string toolDescription, int toolQuantity, int? supplierId, string? toolTag, int? userId)
         {
             using var db = new MikeInventoryContext();
             Tool? toolToUpdate = db.Tools.FirstOrDefault(x => x.ToolId == toolId);
